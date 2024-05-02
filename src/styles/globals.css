@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Cantarell:wght@400;700&family=Quicksand:wght@400;700&family=Roboto:wght@300;400;500;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+.container {
+  margin: 0 auto !important;
+  width: 90% !important;
+}
+
+body {
+  font-family: "Plus Jakarta Sans", sans-serif !important;
+}
+
+.splide-header .splide__arrow.splide__arrow--prev svg path {
+  fill: white !important;
+}
+
+.splide-header .splide__arrow.splide__arrow--next svg path {
+  fill: white !important;
+}
+
+.splide-header .splide__pagination__page {
+  background-color: white !important;
+}
+
+.splide-header .splide__pagination__page.is-active {
+  background-color: #d40202 !important;
+}
+
+@layer components {
+  .principal-content h3 {
+    @apply text-2xl my-5 font-bold text-acgroup-primary;
+  }
+
+  .principal-content p {
+    @apply text-xl mt-5;
+  }
+}
+
+.new-description p {
+  margin-bottom: 20px;
+}
