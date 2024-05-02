@@ -40,7 +40,7 @@ export default function empresa() {
             <h3
               data-aos="fade-up"
               data-aos-delay="100"
-              className="text-2xl font-bold text-acgroup-primary mb-5"
+              className="text-2xl font-bold   mb-5"
             >
               Nuestro Grupo
             </h3>
@@ -50,25 +50,26 @@ export default function empresa() {
               data-aos="fade-up"
               data-aos-delay="100"
             >
-              AcGroup es un grupo empresarial dedicado a la logística
-              en comercio exterior líder en el mercado Paraguayo.
+              Lorem ipsum ipsum jasn asd askd lasdaskldmasdasdlad
+              AKSdmkasmdladmla alsdmadma malsdmalsdm asdmalkdalskd
+              asdnla lkadnlkan lkasndlkanld alsdlaksd aasdmlasd
+              asdmalsd lkams lmasldm lasmdlkamsdlasmdlasmdlasmdl
             </p>
             <p
               className="text-xl text-justify"
               data-aos="fade-up"
               data-aos-delay="100"
             >
-              Cuenta con más de 20 Años de presencia en dicho mercado
-              y con un equipo de más 35 profesionales altamente
-              capacitados ha logrado posicionarse como una empresa de
-              vanguardia y referente en la materia tanto a nivel local
-              como regional.
+              Lorem ipsum ipsum jasn asd askd lasdaskldmasdasdlad
+              AKSdmkasmdladmla alsdmadma malsdmalsdm asdmalkdalskd
+              asdnla lkadnlkan lkasndlkanld alsdlaksd aasdmlasd
+              asdmalsd lkams lmasldm lasmdlkamsdlasmdlasmdlasmdl
             </p>
 
             <h3
               data-aos="fade-up"
               data-aos-delay="100"
-              className="text-2xl mt-12 font-bold text-acgroup-primary mb-5"
+              className="text-2xl mt-12 font-bold   mb-5"
             >
               Nuestra Misión
             </h3>
@@ -78,15 +79,16 @@ export default function empresa() {
               data-aos-delay="100"
               className="text-xl mb-5 text-justify"
             >
-              Brindar un servicio flexible de alta calidad, confiable
-              y eficiente, con el fin de lograr la satisfacción del
-              cliente y contribuir con el éxito de su negocio
+              Lorem ipsum ipsum jasn asd askd lasdaskldmasdasdlad
+              AKSdmkasmdladmla alsdmadma malsdmalsdm asdmalkdalskd
+              asdnla lkadnlkan lkasndlkanld alsdlaksd aasdmlasd
+              asdmalsd lkams lmasldm lasmdlkamsdlasmdlasmdlasmdl
             </p>
 
             <h3
               data-aos="fade-up"
               data-aos-delay="100"
-              className="text-2xl mt-12 font-bold text-acgroup-primary mb-5"
+              className="text-2xl mt-12 font-bold   mb-5"
             >
               Nuestros Objetivos
             </h3>
@@ -96,19 +98,16 @@ export default function empresa() {
               data-aos-delay="100"
               className="text-xl mb-5 text-justify"
             >
-              Buscar la excelencia y calidad en el servicio,
-              asesorando e informando a los clientes de los
-              procedimientos y medios de transporte adecuados para el
-              traslado de sus mercaderías; y transportando su carga
-              desde y hacia cualquier parte del mundo de una manera
-              eficaz y eficiente, manteniéndolo constantemente
-              informado en los distintos pasos de la cadena logística.
+              Lorem ipsum ipsum jasn asd askd lasdaskldmasdasdlad
+              AKSdmkasmdladmla alsdmadma malsdmalsdm asdmalkdalskd
+              asdnla lkadnlkan lkasndlkanld alsdlaksd aasdmlasd
+              asdmalsd lkams lmasldm lasmdlkamsdlasmdlasmdlasmdl
             </p>
 
             <h3
               data-aos="fade-up"
               data-aos-delay="100"
-              className="text-2xl mt-12 font-bold text-acgroup-primary mb-5"
+              className="text-2xl mt-12 font-bold   mb-5"
             >
               Nuestra Naturaleza
             </h3>
@@ -118,14 +117,10 @@ export default function empresa() {
               data-aos-delay="100"
               className="text-xl mb-5 text-justify"
             >
-              Somos innovadores en un mercado cada vez más exigente
-              que nos lleva a seguir creando nuevos servicios, como
-              ser el asesoramiento y transporte de carga terrestre
-              consolidada y full a nivel regional (Brasil, Argentina,
-              Chile y Uruguay); siendo actualmente nuestro producto
-              estrella las Cargas Consolidadas San Pablo - Asunción,
-              con un servicio puerta a puerta y en un tiempo de
-              tránsito de 72 horas.
+              Lorem ipsum ipsum jasn asd askd lasdaskldmasdasdlad
+              AKSdmkasmdladmla alsdmadma malsdmalsdm asdmalkdalskd
+              asdnla lkadnlkan lkasndlkanld alsdlaksd aasdmlasd
+              asdmalsd lkams lmasldm lasmdlkamsdlasmdlasmdlasmdl
             </p>
           </div>
           <div className="grid gap-y-4">
@@ -175,7 +170,7 @@ export default function empresa() {
           <h3
             data-aos="fade-up"
             data-aos-delay="100"
-            className="text-2xl font-bold text-acgroup-primary mb-5"
+            className="text-2xl font-bold   mb-5"
           >
             Nuestro Desafío
           </h3>
@@ -185,16 +180,16 @@ export default function empresa() {
             data-aos-delay="100"
             className="text-xl mb-5 text-justify"
           >
-            Brindar soluciones logísticas a las empresas por medio de
-            la tecnología y experiencia aplicada, anticipándonos a la
-            evolución del mercado, agregando valor y creando ventajas
-            competitivas para que nos confíen sus cargas.
+            Lorem ipsum ipsum jasn asd askd lasdaskldmasdasdlad
+              AKSdmkasmdladmla alsdmadma malsdmalsdm asdmalkdalskd
+              asdnla lkadnlkan lkasndlkanld alsdlaksd aasdmlasd
+              asdmalsd lkams lmasldm lasmdlkamsdlasmdlasmdlasmdl
           </p>
 
           <h3
             data-aos="fade-up"
             data-aos-delay="100"
-            className="text-2xl mt-12 font-bold text-acgroup-primary mb-5"
+            className="text-2xl mt-12 font-bold   mb-5"
           >
             Nuestra Actividad
           </h3>
@@ -204,10 +199,10 @@ export default function empresa() {
             data-aos-delay="100"
             className="text-xl mb-5 text-justify"
           >
-            Somos especialistas en transportes alrededor del mundo y
-            estamos a disposición en todo momento con el fin de
-            cumplir con las exigencias de las necesidades del
-            transporte, cualquiera sea su modalidad.
+            Lorem ipsum ipsum jasn asd askd lasdaskldmasdasdlad
+              AKSdmkasmdladmla alsdmadma malsdmalsdm asdmalkdalskd
+              asdnla lkadnlkan lkasndlkanld alsdlaksd aasdmlasd
+              asdmalsd lkams lmasldm lasmdlkamsdlasmdlasmdlasmdl
           </p>
 
           <p
@@ -215,12 +210,10 @@ export default function empresa() {
             data-aos-delay="100"
             className="text-xl mb-5 text-justify"
           >
-            Ofrecemos servicios de confianza desde y hasta diferentes
-            puntos de Asia, Europa, África, y América. Desde el retiro
-            y manipuleo en origen, hasta la entrega en cualquier parte
-            del mundo, nuestros expertos están entrenados para
-            coordinar la carga a través del complejo mundo del
-            comercio internacional.
+            Lorem ipsum ipsum jasn asd askd lasdaskldmasdasdlad
+              AKSdmkasmdladmla alsdmadma malsdmalsdm asdmalkdalskd
+              asdnla lkadnlkan lkasndlkanld alsdlaksd aasdmlasd
+              asdmalsd lkams lmasldm lasmdlkamsdlasmdlasmdlasmdl
           </p>
 
           <p
@@ -228,11 +221,10 @@ export default function empresa() {
             data-aos-delay="100"
             className="text-xl mb-5 text-justify"
           >
-            Nuestra técnica basada en el sistema de localización y
-            seguimiento personalizado de cargas, le proporciona al
-            cliente el control constante de sus envíos a lo largo de
-            toda la cadena logística, cualquiera sea el servicio
-            prestado.
+            Lorem ipsum ipsum jasn asd askd lasdaskldmasdasdlad
+              AKSdmkasmdladmla alsdmadma malsdmalsdm asdmalkdalskd
+              asdnla lkadnlkan lkasndlkanld alsdlaksd aasdmlasd
+              asdmalsd lkams lmasldm lasmdlkamsdlasmdlasmdlasmdl
           </p>
 
           <ul className="list-disc ml-16 mt-20">
@@ -241,85 +233,85 @@ export default function empresa() {
               data-aos-delay="100"
               className="font-bold text-xl mb-4"
             >
-              Transporte Internacional Marítimo, Fluvial, Terrestre y
-              Aéreo, FCL y LCL.
+              Lorem ipsum ipsum jasn asd askd lasdaskldmasdasdlad
+              
             </li>
             <li
               data-aos="fade-up"
               data-aos-delay="100"
               className="font-bold text-xl mb-4"
             >
-              Coordinación y logística para rellenado de contenedores.
+              Lorem ipsum ipsum jasn asd askd lasdaskldmasdasdlad
             </li>
             <li
               data-aos="fade-up"
               data-aos-delay="100"
               className="font-bold text-xl mb-4"
             >
-              Manipuleo de cargas peligrosas.
+              Lorem ipsum ipsum jasn asd askd lasdaskldmasdasdlad
             </li>
             <li
               data-aos="fade-up"
               data-aos-delay="100"
               className="font-bold text-xl mb-4"
             >
-              Servicios Puerta a Puerta.
+              Lorem ipsum ipsum jasn asd askd lasdaskldmasdasdlad
             </li>
             <li
               data-aos="fade-up"
               data-aos-delay="100"
               className="font-bold text-xl mb-4"
             >
-              Almacenaje y distribución.
+              Lorem ipsum ipsum jasn asd askd lasdaskldmasdasdlad
             </li>
             <li
               data-aos="fade-up"
               data-aos-delay="100"
               className="font-bold text-xl mb-4"
             >
-              Análisis y desarrollo de cargas proyecto.
+              Lorem ipsum ipsum jasn asd askd lasdaskldmasdasdlad
             </li>
             <li
               data-aos="fade-up"
               data-aos-delay="100"
               className="font-bold text-xl mb-4"
             >
-              Transporte Interno en todo el territorio paraguayo.
+              Lorem ipsum ipsum jasn asd askd lasdaskldmasdasdlad
             </li>
             <li
               data-aos="fade-up"
               data-aos-delay="100"
               className="font-bold text-xl mb-4"
             >
-              Servicios de consolidaciones y desconsolidaciones.
+              Lorem ipsum ipsum jasn asd askd lasdaskldmasdasdlad
             </li>
             <li
               data-aos="fade-up"
               data-aos-delay="100"
               className="font-bold text-xl mb-4"
             >
-              Seguro de Mercaderías.
+              Lorem ipsum ipsum jasn asd askd lasdaskldmasdasdlad
             </li>
             <li
               data-aos="fade-up"
               data-aos-delay="100"
               className="font-bold text-xl mb-4"
             >
-              Despachos Aduaneros.
+              Lorem ipsum ipsum jasn asd askd lasdaskldmasdasdlad
             </li>
             <li
               data-aos="fade-up"
               data-aos-delay="100"
               className="font-bold text-xl mb-4"
             >
-              Inspección de carga.
+              Lorem ipsum ipsum jasn asd askd lasdaskldmasdasdlad
             </li>
             <li
               data-aos="fade-up"
               data-aos-delay="100"
               className="font-bold text-xl mb-4"
             >
-              Rastreo y seguimiento de cargas
+              Lorem ipsum ipsum jasn asd askd lasdaskldmasdasdlad
             </li>
           </ul>
         </div>
@@ -330,7 +322,7 @@ export default function empresa() {
           <h3
             data-aos="fade-up"
             data-aos-delay="100"
-            className=" font-bold text-3xl text-acgroup-primary mb-10"
+            className=" font-bold text-3xl   mb-10"
           >
             Servicios
           </h3>
@@ -346,8 +338,8 @@ export default function empresa() {
                   src="/assets/icons/arrow-right-services.svg"
                   alt=""
                 />
-                <span className="block text-xl text-acgroup-primary">
-                  Transporte Marítimo-Fluvial
+                <span className="block text-xl  ">
+                Lorem ipsum ipsum 
                 </span>
               </li>
               <li
@@ -359,8 +351,8 @@ export default function empresa() {
                   src="/assets/icons/arrow-right-services.svg"
                   alt=""
                 />
-                <span className="block text-xl text-acgroup-primary">
-                  Transporte Terrestre
+                <span className="block text-xl  ">
+                Lorem ipsum ipsum 
                 </span>
               </li>
               <li
@@ -372,8 +364,8 @@ export default function empresa() {
                   src="/assets/icons/arrow-right-services.svg"
                   alt=""
                 />
-                <span className="block text-xl text-acgroup-primary">
-                  Despacho Aduanero
+                <span className="block text-xl  ">
+                Lorem ipsum ipsum 
                 </span>
               </li>
               <li
@@ -385,8 +377,8 @@ export default function empresa() {
                   src="/assets/icons/arrow-right-services.svg"
                   alt=""
                 />
-                <span className="block text-xl text-acgroup-primary">
-                  Servicio de Transporte Interno
+                <span className="block text-xl  ">
+                Lorem ipsum ipsum 
                 </span>
               </li>
             </ul>
@@ -400,8 +392,8 @@ export default function empresa() {
                   src="/assets/icons/arrow-right-services.svg"
                   alt=""
                 />
-                <span className="block text-xl text-acgroup-primary">
-                  Transporte Marítimo-Fluvial
+                <span className="block text-xl  ">
+                Lorem ipsum ipsum 
                 </span>
               </li>
               <li
@@ -413,8 +405,8 @@ export default function empresa() {
                   src="/assets/icons/arrow-right-services.svg"
                   alt=""
                 />
-                <span className="block text-xl text-acgroup-primary">
-                  Transbordos en Puertos Internacionales
+                <span className="block text-xl  ">
+                Lorem ipsum ipsum 
                 </span>
               </li>
               <li
@@ -426,8 +418,8 @@ export default function empresa() {
                   src="/assets/icons/arrow-right-services.svg"
                   alt=""
                 />
-                <span className="block text-xl text-acgroup-primary">
-                  Seguro de Mercadería
+                <span className="block text-xl  ">
+                Lorem ipsum ipsum 
                 </span>
               </li>
             </ul>
@@ -435,7 +427,7 @@ export default function empresa() {
         </div>
         <div
           data-aos="fade-left"
-          className="py-14 lg:py-20 px-8 lg:px-14 grid items-center content-center bg-acgroup-primary h-full rounded-tr-2xl rounded-br-2xl -ml-2 relative -z-10"
+          className="py-14 lg:py-20 px-8 lg:px-14 grid items-center content-center bg-red-800 h-full rounded-tr-2xl rounded-br-2xl -ml-2 relative -z-10"
         >
           <h3
             data-aos="fade-up"
@@ -471,7 +463,7 @@ export default function empresa() {
             data-aos-delay="100"
             className="text-white mb-4"
           >
-            Solicitar mi casilla de correos en Miami - Usa
+              Lorem ipsum ipsum 
           </p>
         </div>
       </div>

@@ -58,22 +58,21 @@ export default function Navbar() {
             Inicio
           </NextLink>
           <NextLink
-            href="/empresa"
+            href="/catalogo"
             className="block text-3xl lg:text-base font-bold text-[#2C363F]"
           >
             Catálogo
           </NextLink>
 
           <NextLink
-            href="/noticias"
+            href="/trabajos"
             className="block text-3xl lg:text-base font-bold text-[#2C363F]"
           >
             Trabajos
           </NextLink>
           
           <a
-            target="_blank"
-            href="https://www.acgroupbox.com/"
+            href="/empresa"
             className="block text-3xl lg:text-base font-bold text-[#2C363F]"
           >
             Empresa
