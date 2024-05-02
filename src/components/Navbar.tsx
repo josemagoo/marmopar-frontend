@@ -71,12 +71,12 @@ export default function Navbar() {
             Trabajos
           </NextLink>
           
-          <a
+          <NextLink
             href="/empresa"
             className="block text-3xl lg:text-base font-bold text-[#2C363F]"
           >
             Empresa
-          </a>
+          </NextLink>
           <NextLink
             href="/contacto"
             className="block text-3xl lg:text-base font-bold text-[#2C363F]"
