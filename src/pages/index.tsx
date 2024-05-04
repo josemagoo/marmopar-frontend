@@ -224,7 +224,7 @@ export default function Home() {
 
             <section className="py-12 p-2 lg:py-36 grid lg:grid-cols-2 z-10">
               <h2
-                className="mx-auto lg:mt-10 text-6xl font-bold "
+                className="mx-auto lg:mt-10 text-4xl lg:text-6xl  font-bold "
               >
                 CONOZCA <br/>
                 NUESTRAS <br/>
@@ -232,21 +232,21 @@ export default function Home() {
               </h2>
 
               <div className="lg:text-right mx-auto grid grid-cols-1">
-                <a href="" className="mt-10 lg:mt-5 text-center w-100 px-8 py-3 text-2xl lg:text-4xl text-white"
+                <a href="" className="mt-10 lg:mt-5 text-center w-100 px-6 lg:px-8 py-3 text-xl lg:text-4xl text-white"
                  style={{
                   backgroundColor: '#000000',
                 }}>MARMOLES Y GRANITO</a>
 
 
 
-                <a href="" className="mt-5 text-center w-100 px-8 py-3 text-2xl lg:text-4xl text-white"
+                <a href="" className="mt-5 text-center w-100 px-6 lg:px-8 py-3 text-xl lg:text-4xl text-white"
                  style={{
                   backgroundColor: '#C00000',
                 }}>CUARZO Y SINTÉTICO</a>
 
 
 
-                <a href="" className="mt-5 text-center w-100 px-8 py-3 text-2xl lg:text-4xl text-white"
+                <a href="" className="mt-5 text-center w-100 px-6 lg:px-8 py-3 text-xl lg:text-4xl text-white"
                  style={{
                   backgroundColor: '#000000',
                 }}>INSUMOS Y MATERIAS PRIMAS</a>
