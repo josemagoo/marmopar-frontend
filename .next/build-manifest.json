@@ -32,15 +32,20 @@
       "static/chunks/main.js",
       "static/chunks/pages/catalogo.js"
     ],
-    "/contacto": [
+    "/catalogo/[slug]": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/contacto.js"
+      "static/chunks/pages/catalogo/[slug].js"
     ],
     "/trabajos": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
       "static/chunks/pages/trabajos.js"
+    ],
+    "/trabajos/[slug]": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/trabajos/[slug].js"
     ]
   },
   "ampFirstPages": []

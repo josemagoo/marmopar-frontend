@@ -17,7 +17,7 @@ export default function Intern() {
   return (
     <Layout>
       <Head>
-        <title>ACGroup - {pageIntern?.title}</title>
+        <title>Marmopar - {pageIntern?.title}</title>
       </Head>
 
       <header

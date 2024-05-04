@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import dayjs from "dayjs";
 
 import Layout from "@/components/Layout";
 import axios from "../config/axios";
@@ -7,8 +6,8 @@ import Link from "next/link";
 import Head from "next/head";
 
 export default function Trabajos() {
-  const [news, setNews] = useState<any>(null);
-  const [errorNews, setErrorNews] = useState<any>(null);
+  const [trabajos, setTrabajos] = useState<any>(null);
+  const [errorTrabajos, setErrorTrabajos] = useState<any>(null);
   const [currentPage, setCurrentPage] = useState<any>(1);
 
   useEffect(() => {
@@ -17,14 +16,16 @@ export default function Trabajos() {
         const response = await axios.get(
           `/trabajos?page=${currentPage}`
         );
-        setNews(response?.data);
+        console.log(response.data);
+
+        setTrabajos(response?.data);
       } catch (error) {
-        setErrorNews(error);
+        setErrorTrabajos(error);
       }
     })();
   }, [currentPage]);
 
-  let cantidadDeBotones = Math.ceil(news?.total / news?.per_page);
+  let cantidadDeBotones = Math.ceil(trabajos?.total / trabajos?.per_page);
 
   const maximoBotonesEnPaginacion = 15; // Establece tu límite máximo
   if (cantidadDeBotones > maximoBotonesEnPaginacion) {
@@ -53,27 +54,26 @@ export default function Trabajos() {
       </header>
 
       <div className="container py-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mt-20 lg:gap-16">
-        {news ? (
-          news?.data.map((newItem: any, index: number) => (
+        {trabajos ? (
+          trabajos?.data.map((trabajoItem: any, index: number) => (
             <Link
-              href={`/trabajos/${newItem.slug}`}
+              href={`/trabajos/${trabajoItem.slug}`}
               className="block"
-              key={newItem.id}
+              key={trabajoItem.id}
               data-aos="fade-up"
               data-aos-delay={index * 100}
             >
               <img
-                src={`${process.env.NEXT_PUBLIC_URL_STORAGE}/${newItem.cover}`}
+                src={`${process.env.NEXT_PUBLIC_URL_STORAGE}/${trabajoItem.img}`}
                 alt=""
                 className="w-full object-cover"
               />
               <p className="text-sm py-2">
-                {dayjs(newItem.created_at).format("DD/MM/YYYY")}
               </p>
-              <p className="text-lg font-bold">{newItem.name}</p>
+              <p className="text-lg font-bold">{trabajoItem.title}</p>
             </Link>
           ))
-        ) : errorNews ? (
+        ) : errorTrabajos ? (
           <div>Error al cargar trabajos</div>
         ) : (
           <div>Cargando...</div>

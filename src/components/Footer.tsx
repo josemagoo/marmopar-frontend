@@ -1,4 +1,5 @@
 import React from "react";
+import NextLink from "next/link";
 
 export default function Footer() {
   return (
@@ -10,12 +11,12 @@ export default function Footer() {
 
         <div className="p-5">
           <a href="#" className="text-white p-2 block font-bold	">Contenido de Interés</a>
-          <a href="#" className="text-white p-2 block opacity-70">Catálogo</a>
-          <a href="#" className="text-white p-2 block opacity-70">Trabajos</a>
-          <a href="#" className="text-white p-2 block opacity-70">Empresa</a>
-          <a href="#" className="text-white p-2 block opacity-70">Política de Privacidad</a>
-          <a href="#" className="text-white p-2 block opacity-70">Política de Cookies</a>
-          <a href="#" className="text-white p-2 block opacity-70">Aviso Legal</a>
+          <NextLink href="/catalogo" className="text-white p-2 block opacity-70">Catálogo</NextLink>
+          <NextLink href="/trabajos" className="text-white p-2 block opacity-70">Trabajos</NextLink>
+          <NextLink href="/empresa" className="text-white p-2 block opacity-70">Empresa</NextLink>
+          <NextLink href="/politica" className="text-white p-2 block opacity-70">Política de Privacidad</NextLink>
+          <NextLink href="/cookies" className="text-white p-2 block opacity-70">Política de Cookies</NextLink>
+          <NextLink href="/aviso" className="text-white p-2 block opacity-70">Aviso Legal</NextLink>
 
 
 

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import dayjs from "dayjs";
 
 import Layout from "@/components/Layout";
 import axios from "../config/axios";
@@ -7,24 +6,25 @@ import Link from "next/link";
 import Head from "next/head";
 
 export default function Catalogos() {
-  const [news, setNews] = useState<any>(null);
-  const [errorNews, setErrorNews] = useState<any>(null);
+  const [catalogos, setCatalogos] = useState<any>(null);
+  const [errorCatalogos, setErrorCatalogos] = useState<any>(null);
   const [currentPage, setCurrentPage] = useState<any>(1);
 
   useEffect(() => {
     (async () => {
       try {
         const response = await axios.get(
-          `/catalogo?page=${currentPage}`
+          `/catalogos?page=${currentPage}`
         );
-        setNews(response?.data);
+        console.log(response.data);
+        setCatalogos(response?.data);
       } catch (error) {
-        setErrorNews(error);
+        setErrorCatalogos(error);
       }
     })();
   }, [currentPage]);
 
-  let cantidadDeBotones = Math.ceil(news?.total / news?.per_page);
+  let cantidadDeBotones = Math.ceil(catalogos?.total / catalogos?.per_page);
 
   const maximoBotonesEnPaginacion = 15; // Establece tu límite máximo
   if (cantidadDeBotones > maximoBotonesEnPaginacion) {
@@ -53,27 +53,25 @@ export default function Catalogos() {
       </header>
 
       <div className="container py-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mt-20 lg:gap-16">
-        {news ? (
-          news?.data.map((newItem: any, index: number) => (
+        {catalogos ? (
+          catalogos?.data.map((catalogoItem: any, index: number) => (
             <Link
-              href={`/catalogo/${newItem.slug}`}
+              href={`/catalogo/${catalogoItem.slug}`}
               className="block"
-              key={newItem.id}
+              key={catalogoItem.id}
               data-aos="fade-up"
               data-aos-delay={index * 100}
             >
               <img
-                src={`${process.env.NEXT_PUBLIC_URL_STORAGE}/${newItem.cover}`}
+                src={`${process.env.NEXT_PUBLIC_URL_STORAGE}/${catalogoItem.img}`}
                 alt=""
                 className="w-full object-cover"
               />
-              <p className="text-sm py-2">
-                {dayjs(newItem.created_at).format("DD/MM/YYYY")}
-              </p>
-              <p className="text-lg font-bold">{newItem.name}</p>
+              
+              <p className="text-lg font-bold">{catalogoItem.title}</p>
             </Link>
           ))
-        ) : errorNews ? (
+        ) : errorCatalogos ? (
           <div>Error al cargar catálogos</div>
         ) : (
           <div>Cargando...</div>
@@ -86,7 +84,7 @@ export default function Catalogos() {
         className="flex flex-wrap items-center gap-3 container pb-20"
       >
         <div className="flex items-center gap-1">
-          <span className="block text-acgroup-primary">
+          <span className="block">
             Ver mas catálogos
           </span>
           <i className="fa-solid fa-angle-right"></i>

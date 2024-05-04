@@ -2,8 +2,9 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/trabajos": "pages/trabajos.js",
-  "/": "pages/index.js",
   "/catalogo": "pages/catalogo.js",
-  "/contacto": "pages/contacto.js"
+  "/": "pages/index.js",
+  "/trabajos": "pages/trabajos.js",
+  "/catalogo/[slug]": "pages/catalogo/[slug].js",
+  "/trabajos/[slug]": "pages/trabajos/[slug].js"
 }

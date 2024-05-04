@@ -12,59 +12,59 @@ import VisibilitySensor from "react-visibility-sensor";
 import dayjs from "dayjs";
 import Head from "next/head";
 import { motion } from "framer-motion";
+import NextLink from "next/link";
+
 
 import {} from "framer-motion";
 import axios from "../config/axios";
 
-const getClients = async () => {
-  try {
-    const clients = await axios.get("/clientes");
-    return clients.data;
-  } catch (error) {
-    console.log(error);
-  }
-};
-
-export const getServerSideProps = async () => {
-  const clients = await getClients();
-  return { props: { clients } };
-};
-
-export default function Home({ clients }: any) {
+export default function Home() {
   const [isVisible, setIsVisible] = useState(false);
 
-  const [news, setNews] = useState<any>(null);
-  const [errorNews, setErrorNews] = useState<any>(null);
+  const [bannersp, setBannersp] = useState<any>(null);
+  const [errorBannersp, setErrorBannersp] = useState<any>(null);
 
-  const [banners, setBanners] = useState<any>(null);
-  const [errorBanners, setErrorBanners] = useState<any>(null);
+  const [bannerss, setBannerss] = useState<any>(null);
+  const [errorBannerss, setErrorBannerss] = useState<any>(null);
 
   const [linkActive, setLinkActive] = useState<number | null>(null);
 
-  // const [clients, setClients] = useState<any>(null);
+  const [clients, setClients] = useState<any>(null);
   const [errorClients, setErrorClients] = useState<any>(null);
 
   useEffect(() => {
-    const fetchNews = async () => {
+
+    const fetchClients = async () => {
       try {
-        const response = await axios.get("/noticias");
-        setNews(response?.data);
+        const response = await axios.get("/clientes");
+        setClients(response?.data);
       } catch (error) {
-        setErrorNews(error);
+        setErrorClients(error);
       }
     };
 
-    const fetchBanners = async () => {
+    const fetchBannersp = async () => {
       try {
-        const response = await axios.get("/banner");
-        setBanners(response?.data);
+        const response = await axios.get("/banner/principal");
+        setBannersp(response?.data);
       } catch (error) {
-        setErrorBanners(error);
+        setErrorBannersp(error);
       }
     };
 
-    fetchBanners();
-    fetchNews();
+    const fetchBannerss = async () => {
+      try {
+        const response = await axios.get("/banner/secundario");
+        setBannerss(response?.data);
+      } catch (error) {
+        setErrorBannerss(error);
+      }
+    };
+
+    fetchClients();
+    fetchBannersp();
+    fetchBannerss();
+
   }, []);
 
   const onVisibilityChange = (isVisible: any) => {
@@ -73,13 +73,9 @@ export default function Home({ clients }: any) {
     }
   };
 
-  let newsLimited;
+ 
 
-  if (news && news.data) {
-    newsLimited = news?.data.slice(0, 3);
-  }
-
-  console.log({ banners });
+  console.log({ bannersp });
 
   return (
     <Layout>
@@ -89,7 +85,7 @@ export default function Home({ clients }: any) {
   
   {/* Banners Primario */}
 
-      {!banners && !errorBanners ? (
+      {!bannersp && !errorBannersp ? (
         <div className="h-[650px] bg-gray-200 animate-pulse w-full"></div>
       ) : (
         <Splide
@@ -100,7 +96,7 @@ export default function Home({ clients }: any) {
           }}
         >
           <SplideTrack className="h-full">
-            {banners?.data.map((banner: any) => (
+            {bannersp?.data.map((banner: any) => (
               <SplideSlide key={banner.id} className="relative">
                 <div>
                   <div
@@ -111,7 +107,7 @@ export default function Home({ clients }: any) {
 
                   <div className="absolute bottom-0 h-6 w-full" />
 
-                  {banner?.name || banner?.description
+                  {banner?.title || banner?.subtitle
                     ? banner.id && (
                         <motion.div
                           initial={{ top: 60 }}
@@ -128,7 +124,7 @@ export default function Home({ clients }: any) {
                                 color: "white",
                               }}
                             >
-                              {banner.name}
+                              {banner.title}
                             </h3>
                            
 
@@ -145,7 +141,7 @@ export default function Home({ clients }: any) {
       )}
 
 {/* Banner secundario */}
-{!banners && !errorBanners ? (
+{!bannerss && !errorBannerss ? (
         <div className="h-[650px] bg-gray-200 animate-pulse w-full"></div>
       ) : (
         <Splide
@@ -156,18 +152,18 @@ export default function Home({ clients }: any) {
           }}
         >
           <SplideTrack className="h-full">
-            {banners?.data.map((banner: any) => (
+            {bannerss?.data.map((banner: any) => (
               <SplideSlide key={banner.id} className="relative">
                 <div>
                   <img
-                    src={`${process.env.NEXT_PUBLIC_URL_STORAGE}/${banner.cover}`}
+                    src={`${process.env.NEXT_PUBLIC_URL_STORAGE}/${banner.img}`}
                     className="w-full h-[500px] lg:h-[650px] object-cover"
                     alt=""
                   />
 
                   <div className=" bottom-0 h-6 bg-acgroup-primary w-full" />
 
-                  {banner?.name || banner?.description
+                  {banner?.title || banner?.subtitle
                     ? banner.id && (
                         <motion.div
                           initial={{ top: 60 }}
@@ -181,18 +177,18 @@ export default function Home({ clients }: any) {
                             <h3
                               className="text-2xl lg:text-4xl font-bold"
                               style={{
-                                color: banner.name_color,
+                                color: banner.color_title,
                               }}
                             >
-                              {banner.name}
+                              {banner.title}
                             </h3>
                             <p
                               className="text-xl lg:text-2xl mt-5"
                               style={{
-                                color: banner.description_color,
+                                color: banner.color_subtitle,
                               }}
                             >
-                              {banner.description}
+                              {banner.subtitle}
                             </p>
 
                             {banner?.link && (
@@ -202,7 +198,7 @@ export default function Home({ clients }: any) {
                                 className="mt-5 w-max px-8 py-3 text-white"
                                 style={{
                                   backgroundColor:
-                                    banner.background_color,
+                                    banner.color_button,
                                 }}
                               >
                                 {banner?.label_button}
@@ -226,7 +222,7 @@ export default function Home({ clients }: any) {
         {({ isVisible }) => (
             
 
-            <section className="py-24 lg:py-36 container grid lg:grid-cols-2 z-10">
+            <section className="py-12 p-2 lg:py-36 grid lg:grid-cols-2 z-10">
               <h2
                 className="mx-auto lg:mt-10 text-6xl font-bold "
               >
@@ -235,7 +231,7 @@ export default function Home({ clients }: any) {
                 SOLUCIONES <br/>
               </h2>
 
-              <div className="text-right grid grid-cols-1">
+              <div className="lg:text-right mx-auto grid grid-cols-1">
                 <a href="" className="mt-10 lg:mt-5 text-center w-100 px-8 py-3 text-2xl lg:text-4xl text-white"
                  style={{
                   backgroundColor: '#000000',
@@ -262,8 +258,8 @@ export default function Home({ clients }: any) {
 
       
       {/* Clientes */}
-      <div className="py-24 lg:py-24  z-10" style={{background: '#C00000'}}>
-        <h1 className="text-4xl text-white text-center">
+      <div className=" lg:py-24  z-10" style={{background: '#C00000'}}>
+        <h1 className="text-4xl mx-auto p-12 lg:p-0 pb-0 text-white text-center">
           NUESTROS CLIENTES
         </h1>
 
@@ -309,7 +305,7 @@ export default function Home({ clients }: any) {
                           <img
                             src={`${process.env.NEXT_PUBLIC_URL_STORAGE}/${client.cover}`}
                             alt=""
-                            className="w-[100px] h-[100px] object-contain"
+                            className="w-[150px] h-[150px] object-contain"
                           />
                         </a>
                       </div>
@@ -328,7 +324,7 @@ export default function Home({ clients }: any) {
       <div className="lg:py-24 bg-white grid lg:grid-cols-2">
 
         <div className="text-center mx-auto">
-                <img className="h-100" src="https://picsum.photos/500" alt="" />
+                <img className="h-100" src="/assets/images/noticia-2.jpg" alt="" />
         </div>
 
         <div className="lg:mt-12 p-12">
@@ -336,9 +332,9 @@ export default function Home({ clients }: any) {
                 <br />
                 catálogo</h1>
                 <p className="mt-2 mb-5 text-[#2C363F]">Presione este botón que le direccionará a nuestro catálogo</p>
-                <a href="#" className="mt-6 text-center w-100 px-8 py-3 text-2xl lg:text-2xl text-white bg-red-700">
+                <NextLink href="#" className="mt-6 text-center w-100 px-8 py-3 text-2xl lg:text-2xl text-white bg-red-700">
                   VER MÁS
-                </a>
+                </NextLink>
         </div>
 
       </div>
@@ -347,7 +343,7 @@ export default function Home({ clients }: any) {
       <div className="bg-black py-24 mx-auto text-center">
             <img className="text-center mx-auto" src="/assets/icons/ubicacion.png" alt="" />
             <h1 className="text-6xl mt-5 mb-10 text-white">¿Queres encontrarnos?</h1>
-            <a href="#" className="mt-10 text-center px-8 py-3 text-2xl lg:text-4xl text-white bg-red-700">
+            <a target="_blank" href="https://maps.app.goo.gl/jT8gAv22PwWmGHSf6" className="mt-10 text-center px-8 py-3 text-2xl lg:text-4xl text-white bg-red-700">
                   Visitá nuestra tienda
                 </a>
             
@@ -358,7 +354,7 @@ export default function Home({ clients }: any) {
       <div className="lg:py-24 bg-white grid lg:grid-cols-2">
 
         <div className="text-center mx-auto">
-                <img className="h-100" src="https://picsum.photos/500" alt="" />
+                <img className="h-100" src="/assets/images/noticia-1.jpg" alt="" />
         </div>
 
         <div className="lg:mt-12 p-12">
@@ -367,7 +363,7 @@ export default function Home({ clients }: any) {
                 <br />
                  Estás a solo un click de nosotros.
 Su consulta no es molestia.</p>
-                <a href="#" className="mt-6 text-center w-100 px-8 py-3 text-2xl lg:text-2xl text-white bg-red-700">
+                <a target="_blank" href="https://wa.me/+595971257448" className="mt-6 text-center w-100 px-8 py-3 text-2xl lg:text-2xl text-white bg-red-700">
                   WhatsApp
                 </a>
         </div>
