@@ -224,7 +224,7 @@ export default function Home() {
 
             <section className="py-12 p-2 lg:py-36 grid lg:grid-cols-2 z-10">
               <h2
-                className="lg:mx-auto lg:mt-10 text-4xl lg:text-6xl  font-bold "
+                className="lg:mx-auto p-4 lg:mt-10 text-4xl lg:text-6xl  font-bold "
               >
                 CONOZCA <br/>
                 NUESTRAS <br/>
@@ -259,7 +259,7 @@ export default function Home() {
       
       {/* Clientes */}
       <div className=" lg:py-24  z-10" style={{background: '#C00000'}}>
-        <h1 className="text-4xl mx-auto lg:p-12 lg:p-0 pb-0 text-white text-center font-bold">
+        <h1 className="text-4xl mx-auto p-8 lg:p-0 pb-0 text-white text-center font-bold">
           NUESTROS CLIENTES
         </h1>
 
