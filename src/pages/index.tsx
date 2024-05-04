@@ -224,7 +224,7 @@ export default function Home() {
 
             <section className="py-12 p-2 lg:py-36 grid lg:grid-cols-2 z-10">
               <h2
-                className="mx-auto lg:mt-10 text-4xl lg:text-6xl  font-bold "
+                className="lg:mx-auto lg:mt-10 text-4xl lg:text-6xl  font-bold "
               >
                 CONOZCA <br/>
                 NUESTRAS <br/>
@@ -232,21 +232,21 @@ export default function Home() {
               </h2>
 
               <div className="lg:text-right mx-auto grid grid-cols-1">
-                <a href="" className="mt-10 lg:mt-5 text-center w-100 px-6 lg:px-8 py-3 text-xl lg:text-4xl text-white"
+                <a href="" className="mt-10 lg:mt-5 text-center w-100 px-6 lg:px-8 py-3 text-xl lg:text-4xl text-white font-bold"
                  style={{
                   backgroundColor: '#000000',
                 }}>MARMOLES Y GRANITO</a>
 
 
 
-                <a href="" className="mt-5 text-center w-100 px-6 lg:px-8 py-3 text-xl lg:text-4xl text-white"
+                <a href="" className="mt-5 text-center w-100 px-6 lg:px-8 py-3 text-xl lg:text-4xl text-white font-bold"
                  style={{
                   backgroundColor: '#C00000',
                 }}>CUARZO Y SINTÉTICO</a>
 
 
 
-                <a href="" className="mt-5 text-center w-100 px-6 lg:px-8 py-3 text-xl lg:text-4xl text-white"
+                <a href="" className="mt-5 text-center w-100 px-6 lg:px-8 py-3 text-xl lg:text-4xl text-white font-bold"
                  style={{
                   backgroundColor: '#000000',
                 }}>INSUMOS Y MATERIAS PRIMAS</a>
@@ -259,7 +259,7 @@ export default function Home() {
       
       {/* Clientes */}
       <div className=" lg:py-24  z-10" style={{background: '#C00000'}}>
-        <h1 className="text-4xl mx-auto p-12 lg:p-0 pb-0 text-white text-center">
+        <h1 className="text-4xl mx-auto lg:p-12 lg:p-0 pb-0 text-white text-center font-bold">
           NUESTROS CLIENTES
         </h1>
 
@@ -328,7 +328,7 @@ export default function Home() {
         </div>
 
         <div className="lg:mt-12 p-12">
-                <h1 className="text-4xl lg:mt-12 text-[#2C363F]">Acceso a nuestro 
+                <h1 className="text-4xl lg:mt-12 text-[#2C363F] font-bold">Acceso a nuestro 
                 <br />
                 catálogo</h1>
                 <p className="mt-2 mb-5 text-[#2C363F]">Presione este botón que le direccionará a nuestro catálogo</p>
@@ -342,7 +342,7 @@ export default function Home() {
       {/* Banners Primario */}
       <div className="bg-black py-24 mx-auto text-center">
             <img className="text-center mx-auto" src="/assets/icons/ubicacion.png" alt="" />
-            <h1 className="text-6xl mt-5 mb-10 text-white">¿Queres encontrarnos?</h1>
+            <h1 className="text-6xl mt-5 mb-10 text-white font-bold">¿Queres encontrarnos?</h1>
             <a target="_blank" href="https://maps.app.goo.gl/jT8gAv22PwWmGHSf6" className="mt-10 text-center px-8 py-3 text-2xl lg:text-4xl text-white bg-red-700">
                   Visitá nuestra tienda
                 </a>
@@ -358,7 +358,7 @@ export default function Home() {
         </div>
 
         <div className="lg:mt-12 p-12">
-                <h1 className="text-4xl lg:mt-12 text-[#2C363F]">Contáctanos</h1>
+                <h1 className="text-4xl lg:mt-12 text-[#2C363F] font-bold">Contáctanos</h1>
                 <p className="mt-2 mb-5 text-[#2C363F]">Nuestro principal canal de comunicación es WhatsApp.
                 <br />
                  Estás a solo un click de nosotros.
