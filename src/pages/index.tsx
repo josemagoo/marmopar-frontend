@@ -342,7 +342,7 @@ export default function Home() {
       {/* Banners Primario */}
       <div className="bg-black py-24 mx-auto text-center">
             <img className="text-center mx-auto" src="/assets/icons/ubicacion.png" alt="" />
-            <h1 className="text-6xl mt-5 mb-10 text-white font-bold">¿Queres encontrarnos?</h1>
+            <h1 className="text-4xl lg:text-6xl mt-5 mb-10 text-white font-bold">¿Queres encontrarnos?</h1>
             <a target="_blank" href="https://maps.app.goo.gl/jT8gAv22PwWmGHSf6" className="mt-10 text-center px-8 py-3 text-2xl lg:text-4xl text-white bg-red-700">
                   Visitá nuestra tienda
                 </a>
