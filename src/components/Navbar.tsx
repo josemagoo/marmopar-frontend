@@ -1,20 +1,28 @@
 import React, { useEffect, useState } from "react";
 import NextLink from "next/link";
-
-import { PAGES_INTERS } from "../../data/interns";
 import { useRouter } from "next/router";
+import { useTranslation } from 'react-i18next';
+
+
 
 export default function Navbar() {
   const router = useRouter();
+  const { locale, locales, asPath } = router;
+  const { t } = useTranslation();
+
 
   const [showMenu, setShowMenu] = useState<boolean>(false);
-  const [showDropdownServices, setShowDropdownServices] =
-    useState<boolean>(false);
+  const [showDropdownServices, setShowDropdownServices] = useState<boolean>(false);
 
   useEffect(() => {
     setShowDropdownServices(false);
     setShowMenu(false);
   }, [router.query.slug]);
+
+  const changeLanguage = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const selectedLocale = e.target.value;
+    router.push(asPath, asPath, { locale: selectedLocale });
+  };
 
   return (
     <nav className="container py-3 flex items-center justify-between">
@@ -30,7 +38,7 @@ export default function Navbar() {
 
       <button
         id="menu-open"
-        className="block lg:hidden text-4xl "
+        className="block lg:hidden text-4xl"
         onClick={() => setShowMenu(true)}
       >
         <i className="fa-solid fa-bars"></i>
@@ -83,6 +91,19 @@ export default function Navbar() {
           >
             Contacto
           </NextLink>
+
+          {/* Language Switcher */}
+          <select
+            value={locale}
+            onChange={changeLanguage}
+            className="block text-3xl lg:text-base font-bold text-[#2C363F]"
+          >
+            {locales?.map((loc) => (
+              <option key={loc} value={loc}>
+                {loc.toUpperCase()}
+              </option>
+            ))}
+          </select>
         </div>
       </div>
     </nav>

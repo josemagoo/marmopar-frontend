@@ -53,7 +53,7 @@ export default function Footer() {
       <hr className="bg-white text-white opacity-50"/>
 
       <p className="text-center text-white p-5 opacity-70">
-      Marmopar® es una empresa registrada de LEPCO S.A,  una empresa de Grupo Solano
+      Marmopar® es una empresa registrada de EMCOPY S.A,  una empresa de Grupo Solano
       </p>
     </footer>
   );

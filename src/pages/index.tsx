@@ -21,11 +21,11 @@ import axios from "../config/axios";
 export default function Home() {
   const [isVisible, setIsVisible] = useState(false);
 
-  const [bannersp, setBannersp] = useState<any>(null);
-  const [errorBannersp, setErrorBannersp] = useState<any>(null);
-
   const [bannerss, setBannerss] = useState<any>(null);
   const [errorBannerss, setErrorBannerss] = useState<any>(null);
+
+  const [bannersp2, setBannersp] = useState<any>(null);
+  const [errorBannersp, setErrorBannersp] = useState<any>(null);
 
   const [linkActive, setLinkActive] = useState<number | null>(null);
 
@@ -43,15 +43,6 @@ export default function Home() {
       }
     };
 
-    const fetchBannersp = async () => {
-      try {
-        const response = await axios.get("/banner/principal");
-        setBannersp(response?.data);
-      } catch (error) {
-        setErrorBannersp(error);
-      }
-    };
-
     const fetchBannerss = async () => {
       try {
         const response = await axios.get("/banner/secundario");
@@ -61,9 +52,18 @@ export default function Home() {
       }
     };
 
+    const fetchBannersp = async () => {
+      try {
+        const response = await axios.get("/banner/principal");
+        setBannersp(response?.data);
+      } catch (error) {
+        setErrorBannersp(error);
+      }
+    };
+
     fetchClients();
-    fetchBannersp();
     fetchBannerss();
+    fetchBannersp();
 
   }, []);
 
@@ -75,7 +75,6 @@ export default function Home() {
 
  
 
-  console.log({ bannersp });
 
   return (
     <Layout>
@@ -83,9 +82,9 @@ export default function Home() {
         <title>Marmopar</title>
       </Head>
   
-  {/* Banners Primario */}
 
-      {!bannersp && !errorBannersp ? (
+{/* Banner Primario */}
+{!bannersp2 && !errorBannersp ? (
         <div className="h-[650px] bg-gray-200 animate-pulse w-full"></div>
       ) : (
         <Splide
@@ -96,63 +95,7 @@ export default function Home() {
           }}
         >
           <SplideTrack className="h-full">
-            {bannersp?.data.map((banner: any) => (
-              <SplideSlide key={banner.id} className="relative">
-                <div>
-                  <div
-                    
-                    className="w-full h-[300px] lg:h-[550px] object-cover"
-                    style={{backgroundColor: "black"}}
-                  ></div>
-
-                  <div className="absolute bottom-0 h-6 w-full" />
-
-                  {banner?.title || banner?.subtitle
-                    ? banner.id && (
-                        <motion.div
-                          initial={{ top: 60 }}
-                          animate={{
-                            top: 0,
-                            transition: { duration: 0.3 },
-                          }}
-                          className="absolute z-[100] container pb-5 lg:pb-0 items-center h-full grid lg:grid-cols-1 top-0 left-1/2 -translate-x-1/2 w-full"
-                        >
-                          <div className="relative flex justify-center flex-col px-12 py-16 w-full h-full">
-                            <h3
-                              className="text-2xl text-center lg:text-6xl font-bold"
-                              style={{
-                                color: "white",
-                              }}
-                            >
-                              {banner.title}
-                            </h3>
-                           
-
-                            
-                          </div>
-                        </motion.div>
-                      )
-                    : null}
-                </div>
-              </SplideSlide>
-            ))}
-          </SplideTrack>
-        </Splide>
-      )}
-
-{/* Banner secundario */}
-{!bannerss && !errorBannerss ? (
-        <div className="h-[650px] bg-gray-200 animate-pulse w-full"></div>
-      ) : (
-        <Splide
-          hasTrack={false}
-          options={{
-            autoplay: true,
-            interval: 3000,
-          }}
-        >
-          <SplideTrack className="h-full">
-            {bannerss?.data.map((banner: any) => (
+            {bannersp2?.data.map((banner: any) => (
               <SplideSlide key={banner.id} className="relative">
                 <div>
                   <img
@@ -216,6 +159,66 @@ export default function Home() {
         </Splide>
       )}
 
+
+  {/* Banners Secundario */}
+
+      {!bannerss && !errorBannerss ? (
+        <div className="h-[650px] bg-gray-200 animate-pulse w-full"></div>
+      ) : (
+        <Splide
+          hasTrack={false}
+          options={{
+            autoplay: true,
+            interval: 3000,
+          }}
+        >
+          <SplideTrack className="h-full">
+            {bannerss?.data.map((banner: any) => (
+              <SplideSlide key={banner.id} className="relative">
+                <div>
+                  <div
+                    
+                    className="w-full h-[300px] lg:h-[550px] object-cover"
+                    style={{backgroundColor: "black"}}
+                  ></div>
+
+                  <div className="absolute bottom-0 h-6 w-full" />
+
+                  {banner?.title || banner?.subtitle
+                    ? banner.id && (
+                        <motion.div
+                          initial={{ top: 60 }}
+                          animate={{
+                            top: 0,
+                            transition: { duration: 0.3 },
+                          }}
+                          className="absolute z-[100] container pb-5 lg:pb-0 items-center h-full grid lg:grid-cols-1 top-0 left-1/2 -translate-x-1/2 w-full"
+                        >
+                          <div className="relative flex justify-center flex-col px-12 py-16 w-full h-full">
+                            <h3
+                              className="text-2xl text-center lg:text-6xl font-bold"
+                              style={{
+                                color: "white",
+                              }}
+                            >
+                              {banner.title}
+                            </h3>
+                           
+
+                            
+                          </div>
+                        </motion.div>
+                      )
+                    : null}
+                </div>
+              </SplideSlide>
+            ))}
+          </SplideTrack>
+        </Splide>
+      )}
+
+
+
       {/* Nuestras soluciones */}
       <VisibilitySensor onChange={onVisibilityChange}>
         {/* @ts-ignore */}
@@ -266,7 +269,7 @@ export default function Home() {
         <Splide
               hasTrack={false}
               options={{
-                perPage: 9,
+                perPage: 7,
                 pagination: false,
                 arrows: false,
                 drag: "free",
@@ -282,10 +285,10 @@ export default function Home() {
                     perPage: 4,
                   },
                   992: {
-                    perPage: 5,
+                    perPage: 4,
                   },
                   1170: {
-                    perPage: 7,
+                    perPage: 4,
                   },
                 },
               }}
@@ -305,7 +308,7 @@ export default function Home() {
                           <img
                             src={`${process.env.NEXT_PUBLIC_URL_STORAGE}/${client.cover}`}
                             alt=""
-                            className="w-[150px] h-[150px] object-contain"
+                            className="w-[150px] h-[150px] object-contain grayscale-img"
                           />
                         </a>
                       </div>
@@ -315,7 +318,7 @@ export default function Home() {
                   <div>error</div>
                 )}
               </SplideTrack>
-            </Splide>
+        </Splide>
 
       </div>
 

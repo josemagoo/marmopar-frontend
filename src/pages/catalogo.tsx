@@ -16,7 +16,6 @@ export default function Catalogos() {
         const response = await axios.get(
           `/catalogos?page=${currentPage}`
         );
-        console.log(response.data);
         setCatalogos(response?.data);
       } catch (error) {
         setErrorCatalogos(error);

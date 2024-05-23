@@ -16,7 +16,6 @@ export default function Trabajos() {
         const response = await axios.get(
           `/trabajos?page=${currentPage}`
         );
-        console.log(response.data);
 
         setTrabajos(response?.data);
       } catch (error) {
