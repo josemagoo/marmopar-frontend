@@ -258,30 +258,30 @@ export default function Home() {
               </h2>
 
               <div className="lg:text-right mx-auto grid grid-cols-1">
-                <a href="/catalogo?filter=1&page=1" className="mt-10 lg:mt-5 text-uppercase text-center w-100 px-6 lg:px-8 py-3 text-xl lg:text-4xl text-white font-bold"
+                <NextLink href="/catalogo?filter=1&page=1" className="mt-10 lg:mt-5 text-uppercase text-center w-100 px-6 lg:px-8 py-3 text-xl lg:text-4xl text-white font-bold"
                  style={{
                   backgroundColor: '#000000',
                 }}>
                   {getTranslation('marmoles_y_granito', currentLocale)}
-                </a>
+                </NextLink>
 
 
 
-                <a href="/catalogo?filter=2&page=1" className="mt-5 text-center w-100 px-6 lg:px-8 py-3 text-xl lg:text-4xl text-white font-bold"
+                <NextLink href="/catalogo?filter=2&page=1" className="mt-5 text-center w-100 px-6 lg:px-8 py-3 text-xl lg:text-4xl text-white font-bold"
                  style={{
                   backgroundColor: '#C00000',
                 }}>
                   {getTranslation('cuarzo_y_sintetico', currentLocale)}
-                  </a>
+                  </NextLink>
 
 
 
-                <a href="/catalogo?filter=3&page=1" className="mt-5 text-center w-100 px-6 lg:px-8 py-3 text-xl lg:text-4xl text-white font-bold"
+                <NextLink href="/catalogo?filter=3&page=1" className="mt-5 text-center w-100 px-6 lg:px-8 py-3 text-xl lg:text-4xl text-white font-bold"
                  style={{
                   backgroundColor: '#000000',
                 }}>
                   {getTranslation('insumos_y_materias_primas', currentLocale)}
-                  </a>
+                  </NextLink>
               </div>
             </section>
           
