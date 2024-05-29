@@ -1,27 +1,32 @@
 import React, { useEffect, useState } from "react";
 import NextLink from "next/link";
 import { useRouter } from "next/router";
-import { useTranslation } from 'react-i18next';
-
-
+import { getTranslation, Locale } from '../config/translation';
 
 export default function Navbar() {
   const router = useRouter();
-  const { locale, locales, asPath } = router;
-  const { t } = useTranslation();
+  const { locales, asPath } = router;
 
-
-  const [showMenu, setShowMenu] = useState<boolean>(false);
-  const [showDropdownServices, setShowDropdownServices] = useState<boolean>(false);
+  // Obtener el idioma actual del local storage o del router, o usar 'es' como valor por defecto
+  const [currentLocale, setCurrentLocale] = useState<Locale>('es');
 
   useEffect(() => {
-    setShowDropdownServices(false);
+    // Solo intentar obtener el idioma del localStorage en el cliente
+    const savedLocale = localStorage.getItem('locale') as Locale;
+    setCurrentLocale(savedLocale || router.locale || 'es');
+  }, [router.locale]); // Dependencia solo en router.locale
+
+  const [showMenu, setShowMenu] = useState<boolean>(false);
+
+  useEffect(() => {
     setShowMenu(false);
   }, [router.query.slug]);
 
   const changeLanguage = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const selectedLocale = e.target.value;
-    router.push(asPath, asPath, { locale: selectedLocale });
+    const selectedLocale = e.target.value as Locale;
+    setCurrentLocale(selectedLocale);
+    localStorage.setItem('locale', selectedLocale);
+    router.push(asPath, asPath, { locale: selectedLocale }).then(() => window.location.reload());
   };
 
   return (
@@ -63,38 +68,38 @@ export default function Navbar() {
             href="/"
             className="block text-3xl lg:text-base font-bold text-[#2C363F]"
           >
-            Inicio
+            {getTranslation('inicio', currentLocale)}
           </NextLink>
           <NextLink
             href="/catalogo"
             className="block text-3xl lg:text-base font-bold text-[#2C363F]"
           >
-            Catálogo
+            {getTranslation('catalogo', currentLocale)}
           </NextLink>
 
           <NextLink
             href="/trabajos"
             className="block text-3xl lg:text-base font-bold text-[#2C363F]"
           >
-            Trabajos
+            {getTranslation('trabajos', currentLocale)}
           </NextLink>
           
           <NextLink
             href="/empresa"
             className="block text-3xl lg:text-base font-bold text-[#2C363F]"
           >
-            Empresa
+            {getTranslation('empresa', currentLocale)}
           </NextLink>
           <NextLink
             href="/contacto"
             className="block text-3xl lg:text-base font-bold text-[#2C363F]"
           >
-            Contacto
+            {getTranslation('contactanos', currentLocale)}
           </NextLink>
 
           {/* Language Switcher */}
           <select
-            value={locale}
+            value={currentLocale}
             onChange={changeLanguage}
             className="block text-3xl lg:text-base font-bold text-[#2C363F]"
           >

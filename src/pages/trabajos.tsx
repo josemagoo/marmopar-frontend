@@ -1,28 +1,41 @@
 import React, { useEffect, useState } from "react";
-
 import Layout from "@/components/Layout";
 import axios from "../config/axios";
 import Link from "next/link";
 import Head from "next/head";
+import { getTranslation, Locale } from '../config/translation';
 
-export default function Trabajos() {
+const Trabajos = () => {
   const [trabajos, setTrabajos] = useState<any>(null);
   const [errorTrabajos, setErrorTrabajos] = useState<any>(null);
-  const [currentPage, setCurrentPage] = useState<any>(1);
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const [locale, setLocale] = useState<Locale>('es'); // Estado para almacenar el idioma seleccionado
 
   useEffect(() => {
-    (async () => {
+    // Obtener el idioma preferido del localStorage o establecer el idioma predeterminado
+    const storedLocale = localStorage.getItem('locale') as Locale;
+    if (storedLocale) {
+      setLocale(storedLocale);
+    } else {
+      setLocale('es'); // Idioma predeterminado
+    }
+  }, []);
+
+  useEffect(() => {
+    const fetchTrabajos = async () => {
       try {
         const response = await axios.get(
-          `/trabajos?page=${currentPage}`
+          `/trabajos?page=${currentPage}&lang=${localStorage.getItem('locale')}`
         );
 
         setTrabajos(response?.data);
       } catch (error) {
         setErrorTrabajos(error);
       }
-    })();
-  }, [currentPage]);
+    };
+
+    fetchTrabajos();
+  }, [currentPage, locale]);
 
   let cantidadDeBotones = Math.ceil(trabajos?.total / trabajos?.per_page);
 
@@ -48,7 +61,7 @@ export default function Trabajos() {
         className="mx-4 lg:mx-16 relative bg-[url('/assets/images/banner-noticias.png')] h-[180px] lg:h-[300px] bg-cover bg-center rounded-bl-2xl rounded-br-2xl"
       >
         <div className="container h-full flex items-center">
-          <h3 className="text-4xl text-white font-bold ">Trabajos</h3>
+          <h3 className="text-4xl text-white font-bold">{getTranslation('trabajos', locale)}</h3>
         </div>
       </header>
 
@@ -67,8 +80,6 @@ export default function Trabajos() {
                 alt=""
                 className="w-full object-cover"
               />
-              <p className="text-sm py-2">
-              </p>
               <p className="text-lg font-bold">{trabajoItem.title}</p>
             </Link>
           ))
@@ -85,8 +96,8 @@ export default function Trabajos() {
         className="flex flex-wrap items-center gap-3 container pb-20"
       >
         <div className="flex items-center gap-1">
-          <span className="block text-acgroup-primary">
-            Ver mas trabajos
+          <span className="block">
+            {getTranslation('ver_mas_trabajo', locale)}
           </span>
           <i className="fa-solid fa-angle-right"></i>
         </div>
@@ -108,9 +119,11 @@ export default function Trabajos() {
             }
           }}
         >
-          Siguiente
+          {getTranslation('siguiente', locale)}
         </button>
       </div>
     </Layout>
   );
-}
+};
+
+export default Trabajos;

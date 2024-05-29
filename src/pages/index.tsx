@@ -18,6 +18,10 @@ import NextLink from "next/link";
 import {} from "framer-motion";
 import axios from "../config/axios";
 
+import { useRouter } from "next/router";
+import { getTranslation, Locale } from '../config/translation';
+
+
 export default function Home() {
   const [isVisible, setIsVisible] = useState(false);
 
@@ -32,11 +36,23 @@ export default function Home() {
   const [clients, setClients] = useState<any>(null);
   const [errorClients, setErrorClients] = useState<any>(null);
 
+  const router = useRouter();
+  const { locales, asPath } = router;
+
+  const [currentLocale, setCurrentLocale] = useState<Locale>('es');
+
+  useEffect(() => {
+    // Solo intentar obtener el idioma del localStorage en el cliente
+    const savedLocale = localStorage.getItem('locale') as Locale;
+    setCurrentLocale(savedLocale || router.locale || 'es');
+  }, [router.locale]); // Dependencia solo en router.locale
+
+
   useEffect(() => {
 
     const fetchClients = async () => {
       try {
-        const response = await axios.get("/clientes");
+        const response = await axios.get("/clientes?lang="+localStorage.getItem('locale'));
         setClients(response?.data);
       } catch (error) {
         setErrorClients(error);
@@ -45,7 +61,7 @@ export default function Home() {
 
     const fetchBannerss = async () => {
       try {
-        const response = await axios.get("/banner/secundario");
+        const response = await axios.get("/banner/secundario?lang="+localStorage.getItem('locale'));
         setBannerss(response?.data);
       } catch (error) {
         setErrorBannerss(error);
@@ -54,7 +70,7 @@ export default function Home() {
 
     const fetchBannersp = async () => {
       try {
-        const response = await axios.get("/banner/principal");
+        const response = await axios.get("/banner/principal?lang="+localStorage.getItem('locale'));
         setBannersp(response?.data);
       } catch (error) {
         setErrorBannersp(error);
@@ -84,6 +100,7 @@ export default function Home() {
   
 
 {/* Banner Primario */}
+<section id="banner-primario">
 {!bannersp2 && !errorBannersp ? (
         <div className="h-[650px] bg-gray-200 animate-pulse w-full"></div>
       ) : (
@@ -158,10 +175,10 @@ export default function Home() {
           </SplideTrack>
         </Splide>
       )}
-
+</section>
 
   {/* Banners Secundario */}
-
+      <section id="banner-secundario">
       {!bannerss && !errorBannerss ? (
         <div className="h-[650px] bg-gray-200 animate-pulse w-full"></div>
       ) : (
@@ -216,6 +233,7 @@ export default function Home() {
           </SplideTrack>
         </Splide>
       )}
+      </section>
 
 
 
@@ -225,34 +243,45 @@ export default function Home() {
         {({ isVisible }) => (
             
 
-            <section className="py-12 p-2 lg:py-36 grid lg:grid-cols-2 z-10">
+            <section id="nuestras-soluciones" className="py-12 p-2 lg:py-36 grid lg:grid-cols-2 z-10">
               <h2
-                className="lg:mx-auto p-4 lg:mt-10 text-4xl lg:text-6xl  font-bold "
+                className="lg:mx-auto p-4 lg:mt-10 text-4xl lg:text-6xl text-uppercase  font-bold "
               >
-                CONOZCA <br/>
-                NUESTRAS <br/>
-                SOLUCIONES <br/>
+                 
+                {getTranslation('conozca', currentLocale)}
+                <br/>
+                {getTranslation('nuestras', currentLocale)}
+                 
+                <br/>
+                {getTranslation('soluciones', currentLocale)}
+                <br/>
               </h2>
 
               <div className="lg:text-right mx-auto grid grid-cols-1">
-                <a href="" className="mt-10 lg:mt-5 text-center w-100 px-6 lg:px-8 py-3 text-xl lg:text-4xl text-white font-bold"
+                <a href="/catalogo?filter=1&page=1" className="mt-10 lg:mt-5 text-uppercase text-center w-100 px-6 lg:px-8 py-3 text-xl lg:text-4xl text-white font-bold"
                  style={{
                   backgroundColor: '#000000',
-                }}>MARMOLES Y GRANITO</a>
+                }}>
+                  {getTranslation('marmoles_y_granito', currentLocale)}
+                </a>
 
 
 
-                <a href="" className="mt-5 text-center w-100 px-6 lg:px-8 py-3 text-xl lg:text-4xl text-white font-bold"
+                <a href="/catalogo?filter=2&page=1" className="mt-5 text-center w-100 px-6 lg:px-8 py-3 text-xl lg:text-4xl text-white font-bold"
                  style={{
                   backgroundColor: '#C00000',
-                }}>CUARZO Y SINTÉTICO</a>
+                }}>
+                  {getTranslation('cuarzo_y_sintetico', currentLocale)}
+                  </a>
 
 
 
-                <a href="" className="mt-5 text-center w-100 px-6 lg:px-8 py-3 text-xl lg:text-4xl text-white font-bold"
+                <a href="/catalogo?filter=3&page=1" className="mt-5 text-center w-100 px-6 lg:px-8 py-3 text-xl lg:text-4xl text-white font-bold"
                  style={{
                   backgroundColor: '#000000',
-                }}>INSUMOS Y MATERIAS PRIMAS</a>
+                }}>
+                  {getTranslation('insumos_y_materias_primas', currentLocale)}
+                  </a>
               </div>
             </section>
           
@@ -261,9 +290,9 @@ export default function Home() {
 
       
       {/* Clientes */}
-      <div className=" lg:py-24  z-10" style={{background: '#C00000'}}>
+      <section id="clientes" className=" lg:py-24  z-10" style={{background: '#C00000'}}>
         <h1 className="text-4xl mx-auto p-8 lg:p-0 pb-0 text-white text-center font-bold">
-          NUESTROS CLIENTES
+          {getTranslation('nuestros_clientes', currentLocale)}
         </h1>
 
         <Splide
@@ -320,58 +349,72 @@ export default function Home() {
               </SplideTrack>
         </Splide>
 
-      </div>
+      </section>
 
       
       {/* Catalogo */}
-      <div className="lg:py-24 bg-white grid lg:grid-cols-2">
+      <section id="catalogo" className="lg:py-24 bg-white grid lg:grid-cols-2">
 
         <div className="text-center mx-auto">
                 <img className="h-100" src="/assets/images/noticia-2.jpg" alt="" />
         </div>
 
         <div className="lg:mt-12 p-12">
-                <h1 className="text-4xl lg:mt-12 text-[#2C363F] font-bold">Acceso a nuestro 
+                <h1 className="text-4xl lg:mt-12 text-[#2C363F] font-bold">
+                  {getTranslation('acceso_a_nuestro', currentLocale)}
+
                 <br />
-                catálogo</h1>
-                <p className="mt-2 mb-5 text-[#2C363F]">Presione este botón que le direccionará a nuestro catálogo</p>
+                {getTranslation('catalogo', currentLocale)}
+                </h1>
+                <p className="mt-2 mb-5 text-[#2C363F]">
+                  {getTranslation('presione_catalogo', currentLocale)}
+
+                </p>
                 <NextLink href="#" className="mt-6 text-center w-100 px-8 py-3 text-2xl lg:text-2xl text-white bg-red-700">
-                  VER MÁS
+                {getTranslation('ver_mas', currentLocale)}
                 </NextLink>
         </div>
 
-      </div>
+      </section>
 
-      {/* Banners Primario */}
-      <div className="bg-black py-24 mx-auto text-center">
+      {/* Nuestra tienda */}
+      <section id="visitanos" className="bg-black py-24 mx-auto text-center">
             <img className="text-center mx-auto" src="/assets/icons/ubicacion.png" alt="" />
-            <h1 className="text-4xl lg:text-6xl mt-5 mb-10 text-white font-bold">¿Queres encontrarnos?</h1>
+            <h1 className="text-4xl lg:text-6xl mt-5 mb-10 text-white font-bold">
+              {getTranslation('queres_encontrarnos', currentLocale)}
+              </h1>
             <a target="_blank" href="https://maps.app.goo.gl/jT8gAv22PwWmGHSf6" className="mt-10 text-center px-8 py-3 text-2xl lg:text-4xl text-white bg-red-700">
-                  Visitá nuestra tienda
+                  {getTranslation('visita_nuestra_tienda', currentLocale)}
                 </a>
             
-      </div>
+      </section>
 
 
       {/* Contacto */}
-      <div className="lg:py-24 bg-white grid lg:grid-cols-2">
+      <section id="contacto" className="lg:py-24 bg-white grid lg:grid-cols-2">
 
         <div className="text-center mx-auto">
                 <img className="h-100" src="/assets/images/noticia-1.jpg" alt="" />
         </div>
 
         <div className="lg:mt-12 p-12">
-                <h1 className="text-4xl lg:mt-12 text-[#2C363F] font-bold">Contáctanos</h1>
-                <p className="mt-2 mb-5 text-[#2C363F]">Nuestro principal canal de comunicación es WhatsApp.
+                <h1 className="text-4xl lg:mt-12 text-[#2C363F] font-bold">
+                {getTranslation('contactanos', currentLocale)}
+                </h1>
+                <p className="mt-2 mb-5 text-[#2C363F]">
+                {getTranslation('canal_comunicacion', currentLocale)}
+
                 <br />
-                 Estás a solo un click de nosotros.
-Su consulta no es molestia.</p>
+                 
+                {getTranslation('no_es_molestia', currentLocale)}
+
+                .</p>
                 <a target="_blank" href="https://wa.me/+595971257448" className="mt-6 text-center w-100 px-8 py-3 text-2xl lg:text-2xl text-white bg-red-700">
                   WhatsApp
                 </a>
         </div>
 
-      </div>
+      </section>
 
      
      

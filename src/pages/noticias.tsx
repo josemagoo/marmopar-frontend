@@ -15,7 +15,7 @@ export default function Noticias() {
     (async () => {
       try {
         const response = await axios.get(
-          `/noticias?page=${currentPage}`
+          `/noticias?page=${currentPage}&lang=${localStorage.getItem('locale')}`
         );
         setNews(response?.data);
       } catch (error) {
