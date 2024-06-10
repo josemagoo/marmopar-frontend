@@ -7,14 +7,12 @@ export default function Navbar() {
   const router = useRouter();
   const { locales, asPath } = router;
 
-  // Obtener el idioma actual del local storage o del router, o usar 'es' como valor por defecto
   const [currentLocale, setCurrentLocale] = useState<Locale>('es');
 
   useEffect(() => {
-    // Solo intentar obtener el idioma del localStorage en el cliente
     const savedLocale = localStorage.getItem('locale') as Locale;
     setCurrentLocale(savedLocale || router.locale || 'es');
-  }, [router.locale]); // Dependencia solo en router.locale
+  }, [router.locale]);
 
   const [showMenu, setShowMenu] = useState<boolean>(false);
 
@@ -28,6 +26,8 @@ export default function Navbar() {
     localStorage.setItem('locale', selectedLocale);
     router.push(asPath, asPath, { locale: selectedLocale }).then(() => window.location.reload());
   };
+
+  const isActive = (path: string) => asPath === path ? "text-red-700" : "text-[#2C363F]";
 
   return (
     <nav className="container py-3 flex items-center justify-between">
@@ -66,38 +66,37 @@ export default function Navbar() {
 
           <NextLink
             href="/"
-            className="block text-3xl lg:text-base font-bold text-[#2C363F]"
+            className={`block text-3xl lg:text-base font-bold ${isActive('/')}`}
           >
             {getTranslation('inicio', currentLocale)}
           </NextLink>
           <NextLink
             href="/catalogo"
-            className="block text-3xl lg:text-base font-bold text-[#2C363F]"
+            className={`block text-3xl lg:text-base font-bold ${isActive('/catalogo')}`}
           >
             {getTranslation('catalogo', currentLocale)}
           </NextLink>
 
           <NextLink
             href="/trabajos"
-            className="block text-3xl lg:text-base font-bold text-[#2C363F]"
+            className={`block text-3xl lg:text-base font-bold ${isActive('/trabajos')}`}
           >
             {getTranslation('trabajos', currentLocale)}
           </NextLink>
           
           <NextLink
             href="/empresa"
-            className="block text-3xl lg:text-base font-bold text-[#2C363F]"
+            className={`block text-3xl lg:text-base font-bold ${isActive('/empresa')}`}
           >
             {getTranslation('empresa', currentLocale)}
           </NextLink>
           <NextLink
             href="/contacto"
-            className="block text-3xl lg:text-base font-bold text-[#2C363F]"
+            className={`block text-3xl lg:text-base font-bold ${isActive('/contacto')}`}
           >
             {getTranslation('contactanos', currentLocale)}
           </NextLink>
 
-          {/* Language Switcher */}
           <select
             value={currentLocale}
             onChange={changeLanguage}

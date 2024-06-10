@@ -34,6 +34,15 @@ export type Translations = {
     marmoles_y_granito: string;
     cuarzo_y_sintetico: string;
     insumos_y_materias_primas: string;
+    cargando: string;
+    error_ocurrido: string;
+    catalogos: string;
+    volver_a_catalogo: string;
+    imagenes: string;
+    quizas_te_interese: string;
+    filtros: string;
+    todos: string;
+    volver_a_trabajos: string;
   };
 };
 
@@ -70,7 +79,16 @@ export const translations: Translations = {
     soluciones: "Soluciones",
     marmoles_y_granito: "Mármoles y Granito",
     cuarzo_y_sintetico: "Cuarzo y Sintético",
-    insumos_y_materias_primas: "Insumos y materias primas"
+    insumos_y_materias_primas: "Insumos y materias primas",
+    cargando: "Cargando",
+    error_ocurrido: "Error Ocurrido",
+    catalogos: "Catálogos",
+    volver_a_catalogo: "Volver a Catálogo",
+    imagenes: "Imágenes",
+    quizas_te_interese: "Quizás te interese",
+    filtros: "Filtros: ",
+    todos: "Todos",
+    volver_a_trabajos: "Volver a Trabajos"
   },
   en: {
     catalogo: "Catalog",
@@ -104,7 +122,16 @@ export const translations: Translations = {
     soluciones: "Solutions",
     marmoles_y_granito: "Marbles and granite",
     cuarzo_y_sintetico: "Quartz and Synthetic",
-    insumos_y_materias_primas: "Inputs and Raw Materials"
+    insumos_y_materias_primas: "Inputs and Raw Materials",
+    cargando: "Loading",
+    error_ocurrido: "An error occurred",
+    catalogos: "Catalogs",
+    volver_a_catalogo: "Back to Catalog",
+    imagenes: "Images",
+    quizas_te_interese: "You might be interested",
+    filtros: "Filters: ",
+    todos: "All",
+    volver_a_trabajos: "Back to Works"
   },
   de: {
     catalogo: "Katalog",
@@ -124,7 +151,7 @@ export const translations: Translations = {
     politica_cookies: "Cookie-Richtlinie",
     aviso_legal: "Impressum",
     marca: "Marmopar® ist ein eingetragenes Unternehmen von EMCOPY S.A, einem Unternehmen der Grupo Solano",
-    inicio: "Startseite", // Traducción de "Inicio" en alemán
+    inicio: "Startseite",
     nuestros_clientes: "Unsere Kunden",
     acceso_a_nuestro: "Zugriff auf unser",
     ver_mas: "Mehr sehen",
@@ -138,7 +165,16 @@ export const translations: Translations = {
     soluciones: "Lösungen",
     marmoles_y_granito: "Marmor und Granit",
     cuarzo_y_sintetico: "Quarz und Synthetik",
-    insumos_y_materias_primas: "Inputs und Rohstoffe"
+    insumos_y_materias_primas: "Inputs und Rohstoffe",
+    cargando: "Wird geladen",
+    error_ocurrido: "Ein Fehler ist aufgetreten",
+    catalogos: "Kataloge",
+    volver_a_catalogo: "Zurück zum Katalog",
+    imagenes: "Bilder",
+    quizas_te_interese: "Vielleicht interessiert es dich",
+    filtros: "Filter: ",
+    todos: "Alle",
+    volver_a_trabajos: 'Zurück zu den Jobs',
   },
   pt: {
     catalogo: "Catálogo",
@@ -172,7 +208,16 @@ export const translations: Translations = {
     soluciones: "Soluções",
     marmoles_y_granito: "Mármores e granitos",
     cuarzo_y_sintetico: "Quartzo e Sintético",
-    insumos_y_materias_primas: "Insumos e Matérias-Primas"
+    insumos_y_materias_primas: "Insumos e Matérias-Primas",
+    cargando: "Carregando",
+    error_ocurrido: "Ocorreu um erro",
+    catalogos: "Catálogos",
+    volver_a_catalogo: "Voltar ao Catálogo",
+    imagenes: "Imagens",
+    quizas_te_interese: "Talvez te interesse",
+    filtros: "Filtros: ",
+    todos: "Todos",
+    volver_a_trabajos: 'Voltar aos trabalhos',
   }
 };
 

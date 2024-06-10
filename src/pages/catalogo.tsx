@@ -112,13 +112,13 @@ const Catalogos = () => {
 
       <div className="container mt-6">
         <div className="flex mt-6">
-          <div className="text-2xl font-bold">Filtros: </div>
+          <div className="text-2xl font-bold">{getTranslation('filtros', locale)} </div>
           <select
             className="p-2 ms-3 border rounded px-5"
             value={filter}
             onChange={handleFilterChange}
           >
-            <option value="">Todos</option>
+            <option value="">{getTranslation('todos', locale)}</option>
             {categories.map((category) => (
               <option key={category.id} value={category.id}>
                 {category.title}

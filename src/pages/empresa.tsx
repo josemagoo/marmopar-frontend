@@ -1,13 +1,55 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Layout from "@/components/Layout";
-
 import Head from "next/head";
+import axios from "../config/axios";
+import { getTranslation, Locale } from '../config/translation';
 
-export default function empresa() {
+export default function Empresa() {
+  const [empresa, setEmpresa] = useState<any>(null);
+  const [errorEmpresa, setErrorEmpresa] = useState<any>(null);
+  const [locale, setLocale] = useState<Locale>('es'); // Estado para almacenar el idioma seleccionado
+
+  useEffect(() => {
+    // Obtener el idioma preferido del localStorage o establecer el idioma predeterminado
+    const storedLocale = localStorage.getItem('locale') as Locale;
+    if (storedLocale) {
+      setLocale(storedLocale);
+    } else {
+      setLocale('es'); // Idioma predeterminado
+    }
+
+    const fetchEmpresa = async () => {
+      try {
+        const response = await axios.get(
+          `${process.env.NEXT_PUBLIC_URL_API}page/empresa?lang=${localStorage.getItem('locale')}`
+        );
+        setEmpresa(response?.data);
+      } catch (error) {
+        setErrorEmpresa(error);
+      }
+    };
+
+    fetchEmpresa();
+  }, []);
+
+  if (!empresa && !errorEmpresa)
+    return (
+      <div className="w-screen h-screen grid place-items-center text-2xl text-gray-600">
+        {getTranslation('cargando', locale)}
+      </div>
+    );
+
+  if (errorEmpresa)
+    return (
+      <div className="w-screen h-screen grid place-items-center text-2xl text-gray-600">
+        {getTranslation('error_ocurrido', locale)}
+      </div>
+    );
+
   return (
     <Layout>
       <Head>
-        <title>La empresa</title>
+        <title>{empresa.title}</title>
       </Head>
 
       <header
@@ -22,7 +64,9 @@ export default function empresa() {
         />
 
         <div className="absolute container top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2">
-          <p className="text-4xl font-bold text-white ">La empresa</p>
+          <p className="text-4xl font-bold text-white ">
+            {empresa.title}
+          </p>
         </div>
       </header>
 
@@ -36,11 +80,14 @@ export default function empresa() {
         </div>
 
         <main className="relative z-10 container grid xl:grid-cols-2 gap-20 lg:32 xl:gap-32 2xl:gap-44 py-16 lg:py-32">
-            Descripcion de la empresa
+          <div
+            className="text-justify new-description"
+            dangerouslySetInnerHTML={{
+              __html: empresa.description,
+            }}
+          />
         </main>
-
       </div>
-        
     </Layout>
   );
 }

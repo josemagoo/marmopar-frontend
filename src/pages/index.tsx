@@ -36,6 +36,21 @@ export default function Home() {
   const [clients, setClients] = useState<any>(null);
   const [errorClients, setErrorClients] = useState<any>(null);
 
+  const [soluciones, setSoluciones] = useState<any>(null);
+  const [errorSoluciones, setErrorSoluciones] = useState<any>(null);
+
+  const [clientes, setClientes] = useState<any>(null);
+  const [errorClientes, setErrorClientes] = useState<any>(null);
+
+  const [catalogo, setCatalogo] = useState<any>(null);
+  const [errorCatalogo, setErrorCatalogo] = useState<any>(null);
+
+  const [ubicacion, setUbicacion] = useState<any>(null);
+  const [errorUbicacion, setErrorUbicacion] = useState<any>(null);
+
+  const [contactanos, setContactanos] = useState<any>(null);
+  const [errorContactanos, setErrorContactanos] = useState<any>(null);
+
   const router = useRouter();
   const { locales, asPath } = router;
 
@@ -77,11 +92,73 @@ export default function Home() {
       }
     };
 
+    const fetchSoluciones = async () => {
+      try {
+        const response = await axios.get(
+          `${process.env.NEXT_PUBLIC_URL_API}section/soluciones?lang=${localStorage.getItem('locale')}`
+        );
+        setSoluciones(response?.data);
+      } catch (error) {
+        setErrorSoluciones(error);
+      }
+    };
+
+    const fetchClientes = async () => {
+      try {
+        const response = await axios.get(
+          `${process.env.NEXT_PUBLIC_URL_API}section/clientes?lang=${localStorage.getItem('locale')}`
+        );
+        setClientes(response?.data);
+      } catch (error) {
+        setErrorClientes(error);
+      }
+    };
+
+    const fetchCatalogo = async () => {
+      try {
+        const response = await axios.get(
+          `${process.env.NEXT_PUBLIC_URL_API}section/catalogo?lang=${localStorage.getItem('locale')}`
+        );
+        setCatalogo(response?.data);
+      } catch (error) {
+        setErrorCatalogo(error);
+      }
+    };
+
+    const fetchUbicacion = async () => {
+      try {
+        const response = await axios.get(
+          `${process.env.NEXT_PUBLIC_URL_API}section/ubicacion?lang=${localStorage.getItem('locale')}`
+        );
+        setUbicacion(response?.data);
+      } catch (error) {
+        setErrorUbicacion(error);
+      }
+    };
+
+    const fetchContactanos = async () => {
+      try {
+        const response = await axios.get(
+          `${process.env.NEXT_PUBLIC_URL_API}section/contactanos?lang=${localStorage.getItem('locale')}`
+        );
+        console.log()
+        setContactanos(response?.data);
+      } catch (error) {
+        setErrorContactanos(error);
+      }
+    };
+
     fetchClients();
     fetchBannerss();
     fetchBannersp();
-
+    fetchSoluciones();
+    fetchClientes();
+    fetchCatalogo();
+    fetchUbicacion();
+    fetchContactanos();
+    
   }, []);
+
 
   const onVisibilityChange = (isVisible: any) => {
     if (isVisible) {

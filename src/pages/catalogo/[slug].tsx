@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import axios from "../../config/axios";
 import Head from "next/head";
+import { getTranslation, Locale } from '../../config/translation';
 
 export default function Catalogo() {
   const router = useRouter();
@@ -14,12 +15,25 @@ export default function Catalogo() {
   const [catalogos, setCatalogos] = useState<any>(null);
   const [errorCatalogos, setErrorCatalogos] = useState<any>(null);
 
+  const [images, setImages] = useState<any[]>([]);
+  const [errorImages, setErrorImages] = useState<any>(null);
+
+  const [locale, setLocale] = useState<Locale>('es'); // Estado para almacenar el idioma seleccionado
+
   useEffect(() => {
+    // Obtener el idioma preferido del localStorage o establecer el idioma predeterminado
+    const storedLocale = localStorage.getItem('locale') as Locale;
+    if (storedLocale) {
+      setLocale(storedLocale);
+    } else {
+      setLocale('es'); // Idioma predeterminado
+    }
+
     if (!router.query.slug) return;
 
     const fetchCatalogos = async () => {
       try {
-        const response = await axios.get("/catalogos");
+        const response = await axios.get(`/catalogos?lang=${localStorage.getItem('locale')}`);
         setCatalogos(response?.data);
       } catch (error) {
         setErrorCatalogos(error);
@@ -29,7 +43,7 @@ export default function Catalogo() {
     const fetchCatalogo = async () => {
       try {
         const response = await axios.get(
-          `${process.env.NEXT_PUBLIC_URL_API}catalogo/${router.query.slug}`
+          `${process.env.NEXT_PUBLIC_URL_API}catalogo/${router.query.slug}?lang=${localStorage.getItem('locale')}`
         );
         setCurrentCatalogo(response?.data);
       } catch (error) {
@@ -37,21 +51,33 @@ export default function Catalogo() {
       }
     };
 
+    const fetchImages = async () => {
+      try {
+        const response = await axios.get(
+          `${process.env.NEXT_PUBLIC_URL_API}catalogo/images/${router.query.slug}`
+        );
+        setImages(response?.data);
+      } catch (error) {
+        setErrorImages(error);
+      }
+    };
+
     fetchCatalogo();
     fetchCatalogos();
+    fetchImages();
   }, [router.query.slug]);
 
   if (!currentCatalogo && !errorCatalogo)
     return (
       <div className="w-screen h-screen grid place-items-center text-2xl text-gray-600">
-        Cargando..
+        {getTranslation('cargando', locale)}
       </div>
     );
 
   if (errorCatalogo)
     return (
       <div className="w-screen h-screen grid place-items-center text-2xl text-gray-600">
-        Ha ocurrido un error
+        {getTranslation('error_ocurrido', locale)}
       </div>
     );
 
@@ -67,7 +93,7 @@ export default function Catalogo() {
         className="mx-4 lg:mx-16 relative bg-[url('/assets/images/banner-noticias.png')] h-[180px] lg:h-[300px] bg-cover bg-center"
       >
         <div className="container h-full flex items-center">
-          <h3 className="text-4xl text-white font-bold ">Catalogos</h3>
+          <h3 className="text-4xl text-white font-bold ">{getTranslation('catalogos', locale)}</h3>
         </div>
       </header>
 
@@ -78,7 +104,7 @@ export default function Catalogo() {
           data-aos="fade-up"
           data-aos-delay="100"
         >
-          <i className="fa-solid fa-angle-left"></i> Volver a Catálogo
+          <i className="fa-solid fa-angle-left"></i> {getTranslation('volver_a_catalogo', locale)}
         </button>
 
         <div className="grid xl:grid-cols-2 pb-20 xl:pb-0 xl:gap-20">
@@ -107,6 +133,22 @@ export default function Catalogo() {
                 __html: currentCatalogo.description,
               }}
             />
+
+            {images.length > 0 && (
+              <div className="mt-10">
+                <h3 className="text-xl font-bold text-acgroup-primary">{getTranslation('imagenes', locale)}</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-5">
+                  {images.map((image) => (
+                    <img
+                      key={image.id}
+                      src={`${process.env.NEXT_PUBLIC_URL_STORAGE}/${image.file}`}
+                      alt={image.name || "Catalogo Image"}
+                      className="w-full object-cover"
+                    />
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
           <div>
             <div
@@ -115,14 +157,14 @@ export default function Catalogo() {
               className="ml-auto max-w-lg bg-red-800 rounded-xl px-10 pt-14 pb-8"
             >
               <h3 className="text-white text-xl border-b-2 border-white pb-3">
-                Quizás te puede interesar
+                {getTranslation('quizas_te_interese', locale)}
               </h3>
 
               <div className="py-10 grid gap-y-14">
                 {!catalogos && !errorCatalogos ? (
-                  <div>Cargando...</div>
+                  <div>{getTranslation('cargando', locale)}</div>
                 ) : errorCatalogos ? (
-                  <div>Ha ocurrido un error</div>
+                  <div>{getTranslation('error_ocurrido', locale)}</div>
                 ) : (
                   catalogos?.data.map((item: any) => {
                     if (item.slug === router.query.slug) return;
@@ -130,7 +172,7 @@ export default function Catalogo() {
                     return (
                       <Link
                         key={item.id}
-                        href={`/catalogos/${item.slug}`}
+                        href={`/catalogo/${item.slug}`}
                         className="block text-white"
                       >
                         {item.title}
