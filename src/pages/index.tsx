@@ -486,7 +486,7 @@ export default function Home() {
                 {getTranslation('no_es_molestia', currentLocale)}
 
                 .</p>
-                <a target="_blank" href="https://wa.me/+595971257448" className="mt-6 text-center w-100 px-8 py-3 text-2xl lg:text-2xl text-white bg-red-700">
+                <a target="_blank" href="https://wa.me/+595961709575" className="mt-6 text-center w-100 px-8 py-3 text-2xl lg:text-2xl text-white bg-red-700">
                   WhatsApp
                 </a>
         </div>

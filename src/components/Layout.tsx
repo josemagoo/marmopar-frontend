@@ -26,7 +26,7 @@ export default function Layout({ children }: LayoutProps) {
       <Navbar />
       {children}
       <a
-        href="https://wa.me/+595971257448"
+        href="https://wa.me/+595961709575"
         target="_blank"
         className={`fixed ${
           scrollY < 200 ? "bottom-10" : "bottom-24"
