@@ -185,7 +185,8 @@ export default function Home() {
           hasTrack={false}
           options={{
             autoplay: true,
-            interval: 3000,
+            interval: 2000,
+            type: "loop"
           }}
         >
           <SplideTrack className="h-full">
@@ -263,7 +264,8 @@ export default function Home() {
           hasTrack={false}
           options={{
             autoplay: true,
-            interval: 3000,
+            interval: 2000,
+            type: "loop"
           }}
         >
           <SplideTrack className="h-full">
@@ -284,7 +286,7 @@ export default function Home() {
                           initial={{ top: 60 }}
                           animate={{
                             top: 0,
-                            transition: { duration: 0.3 },
+                            transition: { duration: 0.2 },
                           }}
                           className="absolute z-[100] container pb-5 lg:pb-0 items-center h-full grid lg:grid-cols-1 top-0 left-1/2 -translate-x-1/2 w-full"
                         >
