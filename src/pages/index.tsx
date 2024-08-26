@@ -214,7 +214,10 @@ export default function Home() {
                           }}
                           className="absolute z-[60] container pb-5 lg:pb-0 items-center h-full grid lg:grid-cols-2 top-0 left-1/2 -translate-x-1/2 w-full"
                         >
-                          <div className=" flex justify-center flex-col px-12 py-16 w-full h-full">
+                          <div className=" flex justify-center flex-col px-12 py-16 w-full h-full" >
+                              <div className="p-7" style={{
+                                backgroundColor: banner?.color_square,
+                              }}>
                             <h3
                               className="text-2xl lg:text-4xl font-bold"
                               style={{
@@ -224,7 +227,7 @@ export default function Home() {
                               {banner.title}
                             </h3>
                             <p
-                              className="text-xl lg:text-2xl mt-5"
+                              className="text-xl lg:text-2xl mt-5 mb-5"
                               style={{
                                 color: banner.color_subtitle,
                               }}
@@ -245,6 +248,7 @@ export default function Home() {
                                 {banner?.label_button}
                               </a>
                             )}
+                            </div>
                           </div>
                           <div className="h-full w-full"></div>
                         </motion.div>
