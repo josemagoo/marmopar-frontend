@@ -173,7 +173,7 @@ export default function Home() {
  
 
   return (
-    <Layout>
+    <Layout whatsappLink={contactanos?.link}>
       <Head>
         <title>Marmopar</title>
       </Head>
@@ -422,24 +422,29 @@ export default function Home() {
       <section id="catalogo" className="lg:py-24 bg-white grid lg:grid-cols-2">
 
         <div className="text-center mx-auto">
-                <img className="h-100" src="/assets/images/noticia-2.jpg" alt="" />
+                <img className="h-100" src={`${process.env.NEXT_PUBLIC_URL_STORAGE}/${catalogo?.img}`} alt="" />
+                
         </div>
 
         <div className="lg:mt-12 p-12">
                 <h1 className="text-4xl lg:mt-12 text-[#2C363F] font-bold">
-                  {getTranslation('acceso_a_nuestro', currentLocale)}
+                  {getTranslation(catalogo?.title, currentLocale)}
 
                 <br />
-                {getTranslation('catalogo', currentLocale)}
                 </h1>
-                <p className="mt-2 mb-5 text-[#2C363F]">
-                  {getTranslation('presione_catalogo', currentLocale)}
+                <p className="mt-2 mb-5 text-[#2C363F]"
+                dangerouslySetInnerHTML={{ __html: getTranslation(catalogo?.description, currentLocale) }}>
 
                 </p>
-                <NextLink href="#" className="mt-6 text-center w-100 px-8 py-3 text-2xl lg:text-2xl text-white bg-red-700">
-                {getTranslation('ver_mas', currentLocale)}
-                </NextLink>
-        </div>
+                {catalogo?.link && (
+                  <NextLink
+                      href={catalogo.link}
+                      className="mt-6 text-center w-100 px-8 py-3 text-2xl lg:text-2xl text-white bg-red-700"
+                  >
+                      {getTranslation(catalogo?.boton_label, currentLocale)}
+                  </NextLink>
+              )}
+                  </div>
 
       </section>
 
@@ -447,10 +452,10 @@ export default function Home() {
       <section id="visitanos" className="bg-black py-24 mx-auto text-center">
             <img className="text-center mx-auto" src="/assets/icons/ubicacion.png" alt="" />
             <h1 className="text-4xl lg:text-6xl mt-5 mb-10 text-white font-bold">
-              {getTranslation('queres_encontrarnos', currentLocale)}
+              {getTranslation(ubicacion?.title, currentLocale)}
               </h1>
-            <a target="_blank" href="https://maps.app.goo.gl/jT8gAv22PwWmGHSf6" className="mt-10 text-center px-8 py-3 text-2xl lg:text-4xl text-white bg-red-700">
-                  {getTranslation('visita_nuestra_tienda', currentLocale)}
+            <a target="_blank" href={ubicacion?.link} className="mt-10 text-center px-8 py-3 text-2xl lg:text-4xl text-white bg-red-700">
+                  {getTranslation(ubicacion?.boton_label, currentLocale)}
                 </a>
             
       </section>
@@ -460,23 +465,18 @@ export default function Home() {
       <section id="contacto" className="lg:py-24 bg-white grid lg:grid-cols-2">
 
         <div className="text-center mx-auto">
-                <img className="h-100" src="/assets/images/noticia-1.jpg" alt="" />
+                <img className="h-100" src={`${process.env.NEXT_PUBLIC_URL_STORAGE}/${contactanos?.img}`} alt="" />
         </div>
 
         <div className="lg:mt-12 p-12">
                 <h1 className="text-4xl lg:mt-12 text-[#2C363F] font-bold">
-                {getTranslation('contactanos', currentLocale)}
+                {getTranslation(contactanos?.title, currentLocale)}
                 </h1>
-                <p className="mt-2 mb-5 text-[#2C363F]">
-                {getTranslation('canal_comunicacion', currentLocale)}
+                <p className="mt-2 mb-5 text-[#2C363F]" 
+                dangerouslySetInnerHTML={{ __html: getTranslation(contactanos?.description, currentLocale) }} />
 
-                <br />
-                 
-                {getTranslation('no_es_molestia', currentLocale)}
-
-                .</p>
-                <a target="_blank" href="https://wa.me/+595961709565" className="mt-6 text-center w-100 px-8 py-3 text-2xl lg:text-2xl text-white bg-red-700">
-                  WhatsApp
+                <a target="_blank" href={contactanos?.link} className="mt-6 text-center w-100 px-8 py-3 text-2xl lg:text-2xl text-white bg-red-700">
+                  {contactanos?.boton_label}
                 </a>
         </div>
 

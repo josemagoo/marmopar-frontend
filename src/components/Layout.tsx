@@ -5,9 +5,10 @@ import Footer from "./Footer";
 
 interface LayoutProps {
   children?: React.ReactNode;
+  whatsappLink?: string;
 }
 
-export default function Layout({ children }: LayoutProps) {
+export default function Layout({ children, whatsappLink }: LayoutProps) {
   const [scrollY, setScrollY] = useState(0);
 
   const handleScroll = () => {
@@ -26,7 +27,7 @@ export default function Layout({ children }: LayoutProps) {
       <Navbar />
       {children}
       <a
-        href="https://wa.me/+595961709565"
+        href={whatsappLink || "https://wa.me/+595961709565"}
         target="_blank"
         className={`fixed ${
           scrollY < 200 ? "bottom-10" : "bottom-24"
