@@ -166,8 +166,11 @@ export default function Home() {
     }
   };
 
+  const convertLineBreaks = (text: any) => {
+    if (!text) return '';
+    return text.replace(/(?:\r\n|\r|\n)/g, '<br />');
+  };
  
-
 
   return (
     <Layout>
@@ -326,42 +329,26 @@ export default function Home() {
               <h2
                 className="lg:mx-auto p-4 lg:mt-10 text-4xl lg:text-6xl text-uppercase  font-bold "
               >
-                 
-                {getTranslation('conozca', currentLocale)}
-                <br/>
-                {getTranslation('nuestras', currentLocale)}
-                 
-                <br/>
-                {getTranslation('soluciones', currentLocale)}
-                <br/>
+                 <div dangerouslySetInnerHTML={{ __html: convertLineBreaks(getTranslation(soluciones?.title, currentLocale)) }}
+                 >
+
+                 </div>
+
+                
               </h2>
 
               <div className="lg:text-right mx-auto grid grid-cols-1">
-                <NextLink href="/catalogo?filter=1&page=1" className="mt-10 lg:mt-5 text-uppercase text-center w-100 px-6 lg:px-8 py-3 text-xl lg:text-4xl text-white font-bold"
-                 style={{
-                  backgroundColor: '#000000',
-                }}>
-                  {getTranslation('marmoles_y_granito', currentLocale)}
-                </NextLink>
-
-
-
-                <NextLink href="/catalogo?filter=2&page=1" className="mt-5 text-center w-100 px-6 lg:px-8 py-3 text-xl lg:text-4xl text-white font-bold"
-                 style={{
-                  backgroundColor: '#C00000',
-                }}>
-                  {getTranslation('cuarzo_y_sintetico', currentLocale)}
-                  </NextLink>
-
-
-
-                <NextLink href="/catalogo?filter=3&page=1" className="mt-5 text-center w-100 px-6 lg:px-8 py-3 text-xl lg:text-4xl text-white font-bold"
-                 style={{
-                  backgroundColor: '#000000',
-                }}>
-                  {getTranslation('insumos_y_materias_primas', currentLocale)}
-                  </NextLink>
-              </div>
+                      {soluciones?.items?.map((item: any) => (
+                          <NextLink
+                              key={item.id}
+                              href={item.link}
+                              className="mt-10 lg:mt-5 text-uppercase text-center w-100 px-6 lg:px-8 py-3 text-xl lg:text-4xl text-white font-bold"
+                              style={{ backgroundColor: item.background_color }}
+                          >
+                              {item.title}
+                          </NextLink>
+                      ))}
+                  </div>
             </section>
           
         )}
