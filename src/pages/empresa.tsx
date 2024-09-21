@@ -7,15 +7,14 @@ import { getTranslation, Locale } from '../config/translation';
 export default function Empresa() {
   const [empresa, setEmpresa] = useState<any>(null);
   const [errorEmpresa, setErrorEmpresa] = useState<any>(null);
-  const [locale, setLocale] = useState<Locale>('es'); // Estado para almacenar el idioma seleccionado
+  const [locale, setLocale] = useState<Locale>('es');
 
   useEffect(() => {
-    // Obtener el idioma preferido del localStorage o establecer el idioma predeterminado
     const storedLocale = localStorage.getItem('locale') as Locale;
     if (storedLocale) {
       setLocale(storedLocale);
     } else {
-      setLocale('es'); // Idioma predeterminado
+      setLocale('es');
     }
 
     const fetchEmpresa = async () => {
@@ -64,7 +63,7 @@ export default function Empresa() {
         />
 
         <div className="absolute container top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2">
-          <p className="text-4xl font-bold text-white ">
+          <p className="text-4xl font-bold text-white">
             {empresa.title}
           </p>
         </div>
@@ -86,6 +85,13 @@ export default function Empresa() {
               __html: empresa.description,
             }}
           />
+          <div className="flex justify-center items-center">
+            <img
+              src={`${process.env.NEXT_PUBLIC_URL_STORAGE}/${empresa.img}`} // Asegúrate de que este campo contenga la URL de la imagen
+              alt="Imagen de la empresa"
+              className="max-w-full h-auto"
+            />
+          </div>
         </main>
       </div>
     </Layout>
