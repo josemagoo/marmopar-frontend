@@ -64,6 +64,8 @@ export default function Home() {
     return `rgba(${r}, ${g}, ${b}, ${opacity / 100})`;
   };
 
+
+  
   useEffect(() => {
     // Solo intentar obtener el idioma del localStorage en el cliente
     const savedLocale = localStorage.getItem('locale') as Locale;
