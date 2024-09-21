@@ -56,6 +56,13 @@ export default function Home() {
 
   const [currentLocale, setCurrentLocale] = useState<Locale>('es');
 
+  const getRgbaColor = (hexColor, opacity) => {
+    let r = parseInt(hexColor.slice(1, 3), 16);
+    let g = parseInt(hexColor.slice(3, 5), 16);
+    let b = parseInt(hexColor.slice(5, 7), 16);
+    return `rgba(${r}, ${g}, ${b}, ${opacity / 100})`;
+  };
+
   useEffect(() => {
     // Solo intentar obtener el idioma del localStorage en el cliente
     const savedLocale = localStorage.getItem('locale') as Locale;
@@ -216,7 +223,7 @@ export default function Home() {
                         >
                           <div className=" flex justify-center flex-col px-12 py-16 w-full h-full" >
                               <div className="p-7" style={{
-                                backgroundColor: banner?.color_square,
+                                backgroundColor: getRgbaColor(banner?.color_square, banner?.opacity),
                               }}>
                             <h3
                               className="text-2xl lg:text-4xl font-bold"
