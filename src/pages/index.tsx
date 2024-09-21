@@ -56,6 +56,7 @@ export default function Home() {
 
   const [currentLocale, setCurrentLocale] = useState<Locale>('es');
 
+  //Obtener el color despues de ponerle la opacidad
   const getRgbaColor = (hexColor, opacity) => {
     let r = parseInt(hexColor.slice(1, 3), 16);
     let g = parseInt(hexColor.slice(3, 5), 16);
@@ -63,8 +64,6 @@ export default function Home() {
     return `rgba(${r}, ${g}, ${b}, ${opacity / 100})`;
   };
 
-
-  
   useEffect(() => {
     // Solo intentar obtener el idioma del localStorage en el cliente
     const savedLocale = localStorage.getItem('locale') as Locale;
