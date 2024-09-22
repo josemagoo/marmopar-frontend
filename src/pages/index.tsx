@@ -56,6 +56,26 @@ export default function Home() {
 
   const [currentLocale, setCurrentLocale] = useState<Locale>('es');
 
+  const [config, setConfig] = useState<any>(null);
+  const [errorConfig, setErrorConfig] = useState<any>(null);
+
+  useEffect(() => {
+
+    const fetchConfig = async () => {
+      try {
+        const response = await axios.get(
+          `${process.env.NEXT_PUBLIC_URL_API}configs`
+        );
+        console.log(response?.data?.config);
+        setConfig(response?.data?.config);
+      } catch (error) {
+        setErrorConfig(error);
+      }
+    };
+
+    fetchConfig();
+  }, []);
+
   //Obtener el color despues de ponerle la opacidad
   const getRgbaColor = (hexColor: any, opacity: any) => {
     let r = parseInt(hexColor.slice(1, 3), 16);
@@ -185,7 +205,12 @@ export default function Home() {
   return (
     <Layout whatsappLink={contactanos?.link}>
       <Head>
-        <title>Marmopar</title>
+        <title>{config?.title_site}</title>
+        <link
+          rel="shortcut icon"
+          href={`${process.env.NEXT_PUBLIC_URL_STORAGE}/${config?.favicon}`}
+          type="image/x-icon"
+        />
       </Head>
   
 

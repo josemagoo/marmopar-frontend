@@ -1,6 +1,12 @@
 import { Html, Head, Main, NextScript } from "next/document";
 
+
+
 export default function Document() {
+
+
+
+
   return (
     <Html lang="es">
       <Head>
@@ -11,11 +17,7 @@ export default function Document() {
           crossOrigin="anonymous"
           referrerPolicy="no-referrer"
         />
-        <link
-          rel="shortcut icon"
-          href="/favicon.png"
-          type="image/x-icon"
-        />
+        
         <script
           async
           src="https://www.googletagmanager.com/gtag/js?id=G-K1PFHXKF8N"

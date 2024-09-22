@@ -2,12 +2,33 @@ import React, { useEffect, useState } from "react";
 import NextLink from "next/link";
 import { useRouter } from "next/router";
 import { getTranslation, Locale } from '../config/translation';
+import axios from "../config/axios";
 
 export default function Navbar() {
   const router = useRouter();
   const { locales, asPath } = router;
 
   const [currentLocale, setCurrentLocale] = useState<Locale>('es');
+
+  const [config, setConfig] = useState<any>(null);
+  const [errorConfig, setErrorConfig] = useState<any>(null);
+
+  useEffect(() => {
+
+    const fetchConfig = async () => {
+      try {
+        const response = await axios.get(
+          `${process.env.NEXT_PUBLIC_URL_API}configs`
+        );
+        console.log(response?.data?.config);
+        setConfig(response?.data?.config);
+      } catch (error) {
+        setErrorConfig(error);
+      }
+    };
+
+    fetchConfig();
+  }, []);
 
   useEffect(() => {
     const savedLocale = localStorage.getItem('locale') as Locale;
@@ -34,7 +55,7 @@ export default function Navbar() {
       <div>
         <NextLink href="/" className="block">
           <img
-            src="/assets/images/logo.png"
+            src={`${process.env.NEXT_PUBLIC_URL_STORAGE}/${config?.logo}`}
             alt=""
             className="w-[150px] lg:w-[200px] object-contain"
           />

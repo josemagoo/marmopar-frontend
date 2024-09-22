@@ -9,6 +9,27 @@ export default function Footer() {
   const [currentLocale, setCurrentLocale] = useState<Locale>('es');
   const [footerData, setFooterData] = useState<{ [key: number]: any[] }>({});
 
+  const [config, setConfig] = useState<any>(null);
+  const [errorConfig, setErrorConfig] = useState<any>(null);
+
+  useEffect(() => {
+
+    const fetchConfig = async () => {
+      try {
+        const response = await axios.get(
+          `${process.env.NEXT_PUBLIC_URL_API}configs`
+        );
+        console.log(response?.data?.config);
+        setConfig(response?.data?.config);
+      } catch (error) {
+        setErrorConfig(error);
+      }
+    };
+
+    fetchConfig();
+  }, []);
+
+
   useEffect(() => {
     const savedLocale = localStorage.getItem('locale') as Locale;
     setCurrentLocale(savedLocale || router.locale || 'es');
@@ -29,7 +50,7 @@ export default function Footer() {
     <footer className="footer bg-[#061A40] relative z-[200]">
       <div className="grid grid-cols-2 lg:grid-cols-4 py-12 lg:py-24">
         <div className="mx-auto p-5">
-          <img src="/assets/images/logo.png" className="w-[200px] lg:w-[300px]" alt="" />
+          <img src={`${process.env.NEXT_PUBLIC_URL_STORAGE}/${config?.logo}`} className="w-[200px] lg:w-[300px]" alt="" />
         </div>
 
         <div className="p-5">
