@@ -55,3 +55,33 @@ body {
 .grayscale-img:hover {
   filter: grayscale(0%);
 }
+
+.new-description h1 {
+  font-size: 2.5em; /* Tamaño predeterminado para h1 */
+  font-weight: bold; /* Peso recomendado */
+}
+
+.new-description h2 {
+  font-size: 2em; /* Tamaño predeterminado para h2 */
+  font-weight: bold; /* Peso recomendado */
+}
+
+.new-description h3 {
+  font-size: 1.75em; /* Tamaño predeterminado para h3 */
+  font-weight: bold; /* Peso recomendado */
+}
+
+.new-description h4 {
+  font-size: 1.5em; /* Tamaño predeterminado para h4 */
+  font-weight: bold; /* Peso recomendado */
+}
+
+.new-description h5 {
+  font-size: 1.25em; /* Tamaño predeterminado para h5 */
+  font-weight: bold; /* Peso recomendado */
+}
+
+.new-description h6 {
+  font-size: 1em; /* Tamaño predeterminado para h6 */
+  font-weight: bold; /* Peso recomendado */
+}
