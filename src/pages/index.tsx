@@ -221,6 +221,7 @@ export default function Home() {
         <meta property="og:image" content="https://www.marmolpy.com/og-image.jpg" />
         <meta property="og:site_name" content="Marmopar" />
         <meta property="og:locale" content="es_PY" />
+
       </Head>
   
 
