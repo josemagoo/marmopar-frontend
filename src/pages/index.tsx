@@ -211,6 +211,16 @@ export default function Home() {
           href={`${process.env.NEXT_PUBLIC_URL_STORAGE}/${config?.favicon}`}
           type="image/x-icon"
         />
+        <meta name="description" content="Marmopar ofrece productos de alta calidad en mármol, granito y cuarzo en Paraguay. Ideal para proyectos residenciales y comerciales." />
+        <meta name="keywords" content="Mármol Paraguay, Granito Paraguay, Cuarzo Paraguay, Marmolería, Diseño de interiores, Mesadas de mármol, Mesadas de granito, Revestimientos en piedra natural" />
+        <meta name="author" content="Marmopar" />
+        <meta property="og:title" content="Marmopar - Mármol, Granito y Cuarzo en Paraguay" />
+        <meta property="og:description" content="Marmopar, especialistas en mármol, granito y cuarzo, brinda materiales premium para cocinas, baños y proyectos decorativos en Paraguay." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.marmolpy.com" />
+        <meta property="og:image" content="https://www.marmolpy.com/og-image.jpg" />
+        <meta property="og:site_name" content="Marmopar" />
+        <meta property="og:locale" content="es_PY" />
       </Head>
   
 
