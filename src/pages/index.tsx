@@ -218,7 +218,7 @@ export default function Home() {
         <meta property="og:description" content={config?.rrss_description} />
         <meta property="og:type" content="website" />
         <meta property="og:url" content={config?.rrss_url} />
-        <meta property="og:image" content={`${process.env.NEXT_PUBLIC_URL_STORAGE}/${config?.rrss_image}`} />
+        <meta property="og:image" content={`${process.env.NEXT_PUBLIC_URL_STORAGE}${config?.rrss_image}`} />
         <meta property="og:site_name" content={config?.rrss_title} />
 
       </Head>
