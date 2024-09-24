@@ -7,7 +7,7 @@ export default function Document() {
 
   useEffect(() => {
     // Google Tag Manager script
-    (function(w, d, s, l, i) {
+    (function (w: Window & { [key: string]: any }, d: Document, s: string, l: string, i: string) {
       w[l] = w[l] || [];
       w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
       var f = d.getElementsByTagName(s)[0],
