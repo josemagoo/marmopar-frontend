@@ -218,7 +218,7 @@ export default function Home() {
         <meta property="og:description" content="Marmopar, especialistas en mármol, granito y cuarzo, brinda materiales premium para cocinas, baños y proyectos decorativos en Paraguay." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://www.marmolpy.com" />
-        <meta property="og:image" content="https://www.marmolpy.com/og-image.jpg" />
+        <meta property="og:image" content="https://admin.marmolpy.com/img/logo.png" />
         <meta property="og:site_name" content="Marmopar" />
         <meta property="og:locale" content="es_PY" />
 
