@@ -55,12 +55,12 @@ export default function Home() {
   const { locales, asPath } = router;
 
   const [currentLocale, setCurrentLocale] = useState<Locale>('es');
-
+/*
   const [config, setConfig] = useState<any>(null);
   const [errorConfig, setErrorConfig] = useState<any>(null);
-
+*/
   useEffect(() => {
-
+/*
     const fetchConfig = async () => {
       try {
         const response = await axios.get(
@@ -75,7 +75,7 @@ export default function Home() {
 
     fetchConfig();
   }, []);
-
+*/
   //Obtener el color despues de ponerle la opacidad
   const getRgbaColor = (hexColor: any, opacity: any) => {
     let r = parseInt(hexColor.slice(1, 3), 16);
@@ -205,21 +205,21 @@ export default function Home() {
   return (
     <Layout whatsappLink={contactanos?.link}>
       <Head>
-        <title>{config?.title_site}</title>
+        <title>Mármol en Paraguay</title>
         <link
           rel="shortcut icon"
-          href={`${process.env.NEXT_PUBLIC_URL_STORAGE}/${config?.favicon}`}
+          href="https://admin.marmolpy.com/storage/paginas_covers/mh0xi2zyHi60tCKaoYycbJAT503CD8WobQf2brLL.png"
           type="image/x-icon"
         />
-        <meta name="description" content={config?.rrss_description} />
-        <meta name="keywords" content={config?.keywords} />
-        <meta name="author" content={config?.title_site} />
-        <meta property="og:title" content={config?.rrss_title} />
-        <meta property="og:description" content={config?.rrss_description} />
+        <meta name="description" content="Marmopar, especialistas en mármol, granito y cuarzo, brinda materiales premium para cocinas, baños y proyectos decorativos en Paraguay." />
+        <meta name="keywords" content="Mármol Paraguay, Granito Paraguay, Cuarzo Paraguay, Marmolería, Diseño de interiores, Mesadas de mármol, Mesadas de granito, Revestimientos en piedra natural" />
+        <meta name="author" content="MARMOpar Marmolería" />
+        <meta property="og:title" content="MARMOpar Marmolería" />
+        <meta property="og:description" content="Marmopar, especialistas en mármol, granito y cuarzo, brinda materiales premium para cocinas, baños y proyectos decorativos en Paraguay." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content={config?.rrss_url} />
-        <meta property="og:image" content={`${process.env.NEXT_PUBLIC_URL_STORAGE}${config?.rrss_image}`} />
-        <meta property="og:site_name" content={config?.rrss_title} />
+        <meta property="og:url" content="https://www.marmolpy.com" />
+        <meta property="og:image" content="https://admin.marmolpy.com/storage/paginas_covers/mh0xi2zyHi60tCKaoYycbJAT503CD8WobQf2brLL.png" />
+        <meta property="og:site_name" content="MARMOpar Marmolería" />
 
       </Head>
   
