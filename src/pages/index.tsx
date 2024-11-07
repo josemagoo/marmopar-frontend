@@ -55,12 +55,12 @@ export default function Home() {
   const { locales, asPath } = router;
 
   const [currentLocale, setCurrentLocale] = useState<Locale>('es');
-/*
+
   const [config, setConfig] = useState<any>(null);
   const [errorConfig, setErrorConfig] = useState<any>(null);
-*/
+
   useEffect(() => {
-/*
+
     const fetchConfig = async () => {
       try {
         const response = await axios.get(
@@ -75,7 +75,7 @@ export default function Home() {
 
     fetchConfig();
   }, []);
-*/
+
   //Obtener el color despues de ponerle la opacidad
   const getRgbaColor = (hexColor: any, opacity: any) => {
     let r = parseInt(hexColor.slice(1, 3), 16);
